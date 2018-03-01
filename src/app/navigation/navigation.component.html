@@ -1,0 +1,23 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class = "navbar-header">
+        <a class="navbar-brand" href="#">EnergySAVE</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="icon-bar"><a href="#">Home</a></li>
+        <li class="icon-bar"><a href ='/reports'>Reports</a></li>
+        <li class="icon-bar"><a href ='/settings'>Settings</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role ="button">Notifications <span class="badge" *ngIf="notifications">{{notifications.total}}</span>
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li style="width:100%;"*ngFor="let notifs of notifications.data.docs" style="width:100%;">{{notifs.notification}}</li>
+          <li><a routerLink="/allNotifications">see More</a></li>
+        </ul>
+      </li>
+      </ul>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>

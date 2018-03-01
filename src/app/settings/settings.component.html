@@ -1,0 +1,32 @@
+<div class="container">
+  <h2> User Preferences </h2>
+  <form #preferenceForm="ngForm" (ngSubmit)="addPreferences(preferenceForm.value)">
+    <div class="form-group">
+      <label>Property</label>
+      <select name="property" required ngModel>
+        <option name="sho1" value="sho1">55 Heathwood, Bournemouth</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Temperature(&deg;C)</label>
+      <input type="number" name="definedTemp" min="15" max="28" placeholder="21" class="form-control" required ngModel>
+      <p class="text-muted">The room temperature you wish to aim for</p>
+    </div>
+    <div class="form-group">
+      <label>Humidity (%)</label>
+      <input type="number" name="definedHumidity" class="form-control" min="60" max="90" placeholder="70" required ngModel>
+      <p class="text-muted">The room humidity you wish to have.</p>
+    </div>
+    <div class="form-group">
+      <label>Light Level</label>
+      <select name="lumos"  required ngModel>
+        <option name="dark" value="Dark" >Dark</option>
+        <option name="dull" value="Dull" >Dull</option>
+        <option name="dark" value="Bright" >Bright</option>
+        <option name="dark" value="veryBright" >Very Bright</option>
+      </select>
+      <p class="text-muted">The room lumos you wish to have</p>
+    </div>
+    <button  type="submit" class="btn btn-primary" [disabled]="!preferenceForm.form.valid">Submit</button>
+  </form>
+</div>
