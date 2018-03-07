@@ -1,35 +1,32 @@
-<div class="text-center">
-  <h1 class="display-1">Welcome to Energy Saver</h1>
+<div class="container-fluid">
+  <div class="text-center" *ngIf="currentStatus">
+    <h1 class="display-1">Welcome to Energy Saver</h1>
+    <div class="w-150"></div>
+    <h3>Property</h3>
+    <div ><b>Property:</b> {{currentStatus[0]['room']}}</div>
+    <div ><b>Occupancy:</b> {{currentStatus[0]['occupied']}}</div>
+    <div ><b>DateTime:</b> {{currentStatus[0]['timestamp']* 1000 | date:'yy-MMM-dd h:mm '}}</div>
 
-<div class="row " *ngIf="currentStatus">
-  <div class="col-6 col-sm-3"><b>Property:</b> {{currentStatus[0]['room']}}</div>
-  <div class="col-6 col-sm-3"><b>Occupancy:</b> {{currentStatus[0]['occupied']}}</div>
-  <div class="col-6 col-sm-3"><b>DateTime:</b> {{currentStatus[0]['timestamp']* 1000 | date:'yy-MMM-dd h:mm '}}</div>
+    <!-- Force next columns to break to new line -->
+    <div class="w-150"></div>
+    <h3>Inside Status</h3>
+    <div ><b>Temperature:</b> {{currentStatus[0]['temp']}}&deg;C</div>
+    <div><b>Humidity:</b> {{currentStatus[0]['humidity']}}%</div>
+    <div ><b>Lumos:</b> {{currentStatus[0]['light']}}</div><!--ng if for an image of a bulb or somthing-->
 
-  <!-- Force next columns to break to new line -->
-  <div class="w-150"></div>
-  <h3>Inside Status</h3>
+    <!-- Force next columns to break to new line -->
+    <div class="w-150"></div>
+    <h3>Outside Status</h3>
+    <div ><b>Outside Humidity:</b> {{currentStatus[0]['outside_humidity']}}</div>
+    <div ><b>UV Level:</b> {{currentStatus[0]['outside_UV']}}</div>
+    <div ><b>Weather:</b> <img src='{{path}}' height="30" width="30" /></div>
+    <div ><b>Outside Temperature:</b> {{currentStatus[0]['outside_temp']}}&deg;C</div>
 
-  <div class="col-6 col-sm-3"><b>Temperature:</b> {{currentStatus[0]['temp']}}&deg;C</div>
-  <div class="col-6 col-sm-3"><b>Humidity:</b> {{currentStatus[0]['humidity']}}%</div>
-  <div class="col-6 col-sm-3"><b>Lumos:</b> {{currentStatus[0]['light']}}</div><!--ng if for an image of a bulb or somthing-->
-
-  <!-- Force next columns to break to new line -->
-  <div class="w-150"></div>
-
-
-  <div class="w-150"></div>
-
-  <div class="col-6 col-sm-3"><b>Outside Humidity:</b> {{currentStatus[0]['outside_humidity']}}</div>
-  <div class="col-6 col-sm-3"><b>UV Level:</b> {{currentStatus[0]['outside_UV']}}</div>
-
-  <div class="col-6 col-sm-3"><b>Weather:</b> <img src='{{path}}' height="30" width="30" /></div>
-  <div class="col-6 col-sm-3"><b>Outside Temperature:</b> {{currentStatus[0]['outside_temp']}}&deg;C</div>
-
-  <div class="col-6 col-sm-3"><b>Temperature:</b> {{futureData[0]['Temperature']}}</div>
-  <h3>Predictions in 1</h3>
-  <div class="col-6 col-sm-3"><b>Humidity:</b> {{futureData[0]['Humidity']}}</div>
-  <div class="col-6 col-sm-3"><b>Occupied:</b> {{futureData[0]['Occupancy']['in']}}</div>
-  <div class="col-6 col-sm-3"><b>Empty:</b> {{futureData[0]['Occupancy']['out']}}</div>
-</div>
+    <div class="w-150"></div>
+    <h3>Predictions in 1hr</h3>
+    <div ><b>Temperature:</b> <p>{{futureData[0]['Temperature']| number : '1.2-2'}}</p></div>
+    <div ><b>Humidity:</b><p> {{futureData[0]['Humidity']| number : '1.2-2'}}</p></div>
+    <div ><b>Occupied:</b><p> {{futureData[0]['Occupancy']['in']| number : '1.2-2'}}%</p></div>
+    <div ><b>Empty:</b><p> {{futureData[0]['Occupancy']['out']| number : '1.2-2'}}%</p></div>
+  </div>
 </div>

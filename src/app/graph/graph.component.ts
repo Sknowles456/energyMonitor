@@ -146,10 +146,10 @@ export class GraphComponent implements OnInit {
                 },
           pan:{
             enabled:true,
-            mode:'y'
           },
           zoom:{
             enabled:true,
+            mode:'y'
           },
           annotation:{
             drawTime: 'afterDatasetsDraw',

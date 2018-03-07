@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService}  from '../data.service';
+import { SlicePipe } from '@angular/common';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',

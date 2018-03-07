@@ -4,15 +4,18 @@
         <a class="navbar-brand" href="#">EnergySAVE</a>
       </div>
       <ul class="nav navbar-nav">
-        <li class="icon-bar"><a href="#">Home</a></li>
-        <li class="icon-bar"><a href ='/reports'>Reports</a></li>
+        <li class="icon-bar "><a href="#">Home</a></li>
+        <li class="icon-bar "><a href ='/reports'>Reports</a></li>
         <li class="icon-bar"><a href ='/settings'>Settings</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role ="button">Notifications <span class="badge" *ngIf="notifications">{{notifications.total}}</span>
         <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li style="width:100%;"*ngFor="let notifs of notifications.data.docs" style="width:100%;">{{notifs.notification}}</li>
+        <ul class="dropdown-menu" style="width:300px;">
+          <div *ngFor="let notifs of notifications.data.docs" style="padding-left:10px;padding-right:10px;" class="view overlay">
+            <li >{{notifs.notifications[0]|slice:0:30}}...</li>
+            <hr>
+          </div>
           <li><a routerLink="/allNotifications">see More</a></li>
         </ul>
       </li>

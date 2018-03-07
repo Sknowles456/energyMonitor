@@ -76,6 +76,19 @@ export class ChartsComponent implements OnInit {
 
       this._dataService.getGraphData(startDate,endDate)
       .subscribe(res=>{
+        //IF date is selected
+        var startDateString;
+        var endDateString;
+        if(startDate == 0){
+          var endEpoch = new Date().getTime();
+          var startEpoch= endEpoch - 86400000;
+          startDateString = new Date(startEpoch);
+          endDateString = new Date(endEpoch);
+        }else{
+          startDateString = new Date(startDate);
+          endDateString = new Date(endDate);
+        }
+
 //################### OCCUPANCY LOOP CHECK ############################
         var occupancyIn = 0;
         var occupancyOut = 0;
@@ -107,8 +120,8 @@ export class ChartsComponent implements OnInit {
 //########### FEED BACK #######################
       if(res['data'].length > 0){
         this.occupancyFeedback = [];
-        this.occupancyFeedback.push("The Property has been vacant for approximatley "+(occupancyOut *  5)+" minutes between"+startDate+" and "+endDate);
-        this.occupancyFeedback.push("The Property has NOT been vacant for approximatley "+(occupancyIn *  5)+" minutes between"+startDate+" and "+endDate);
+        this.occupancyFeedback.push("The Property has been vacant for approximatley "+(occupancyOut *  5)+" minutes between"+startDateString+" and "+endDateString);
+        this.occupancyFeedback.push("The Property has NOT been vacant for approximatley "+(occupancyIn *  5)+" minutes between"+startDateString+" and "+endDateString);
          if(occupancyOut > occupancyIn){
            this.occupancyFeedback.push("More time is spent outside of this Room");
          }
@@ -171,9 +184,9 @@ export class ChartsComponent implements OnInit {
 //####################### FEEDBACK ###########################
   this.tempFeedback = [];
   if(res['data'].length > 0){
-      this.tempFeedback.push("The MAXIMUM temperature reached between "+ startDate +" - "+endDate+" is " + maxTemp);
-      this.tempFeedback.push("The MINIMUM temperature reached between "+ startDate +" - "+endDate+" is " + minTemp);
-      this.tempFeedback.push("The AVERAGEtemperature reached between "+ startDate +" - "+endDate+" is " + averageTempResult);
+      this.tempFeedback.push("The MAXIMUM temperature reached between "+ startDateString +" - "+endDateString+" is " + maxTemp);
+      this.tempFeedback.push("The MINIMUM temperature reached between "+ startDateString +" - "+endDateString+" is " + minTemp);
+      this.tempFeedback.push("The AVERAGEtemperature reached between "+ startDateString +" - "+endDateString+" is " + averageTempResult);
       if(belowTarget > aboveTarget){
         this.tempFeedback.push("The room is more frequently below expectations");
       }
@@ -237,9 +250,9 @@ export class ChartsComponent implements OnInit {
 //############## FEED BACK #######################
   this.humidityFeedback = [];
   if(res['data'].length > 0){
-      this.humidityFeedback.push("The MAXIMUM temperature reached between "+ startDate +" - "+endDate+" is " + maxHum);
-      this.humidityFeedback.push("The MINIMUM temperature reached between "+ startDate +" - "+endDate+" is " + minHum);
-      this.humidityFeedback.push("The AVERAGE temperature reached between "+ startDate +" - "+endDate+" is " + averageHumResult);
+      this.humidityFeedback.push("The MAXIMUM temperature reached between "+ startDateString +" - "+endDateString+" is " + maxHum);
+      this.humidityFeedback.push("The MINIMUM temperature reached between "+ startDateString +" - "+endDateString+" is " + minHum);
+      this.humidityFeedback.push("The AVERAGE temperature reached between "+ startDateString +" - "+endDateString+" is " + averageHumResult);
       if(belowTargetHum > aboveTargetHum){
         this.humidityFeedback.push("The rooms humidity is more frequently below expectations");
       }

@@ -286,6 +286,19 @@ var ChartsComponent = /** @class */ (function () {
         ;
         this._dataService.getGraphData(startDate, endDate)
             .subscribe(function (res) {
+            //IF date is selected
+            var startDateString;
+            var endDateString;
+            if (startDate == 0) {
+                var endEpoch = new Date().getTime();
+                var startEpoch = endEpoch - 86400000;
+                startDateString = new Date(startEpoch);
+                endDateString = new Date(endEpoch);
+            }
+            else {
+                startDateString = new Date(startDate);
+                endDateString = new Date(endDate);
+            }
             //################### OCCUPANCY LOOP CHECK ############################
             var occupancyIn = 0;
             var occupancyOut = 0;
@@ -319,8 +332,8 @@ var ChartsComponent = /** @class */ (function () {
             //########### FEED BACK #######################
             if (res['data'].length > 0) {
                 _this.occupancyFeedback = [];
-                _this.occupancyFeedback.push("The Property has been vacant for approximatley " + (occupancyOut * 5) + " minutes between" + startDate + " and " + endDate);
-                _this.occupancyFeedback.push("The Property has NOT been vacant for approximatley " + (occupancyIn * 5) + " minutes between" + startDate + " and " + endDate);
+                _this.occupancyFeedback.push("The Property has been vacant for approximatley " + (occupancyOut * 5) + " minutes between" + startDateString + " and " + endDateString);
+                _this.occupancyFeedback.push("The Property has NOT been vacant for approximatley " + (occupancyIn * 5) + " minutes between" + startDateString + " and " + endDateString);
                 if (occupancyOut > occupancyIn) {
                     _this.occupancyFeedback.push("More time is spent outside of this Room");
                 }
@@ -389,9 +402,9 @@ var ChartsComponent = /** @class */ (function () {
             //####################### FEEDBACK ###########################
             _this.tempFeedback = [];
             if (res['data'].length > 0) {
-                _this.tempFeedback.push("The MAXIMUM temperature reached between " + startDate + " - " + endDate + " is " + maxTemp);
-                _this.tempFeedback.push("The MINIMUM temperature reached between " + startDate + " - " + endDate + " is " + minTemp);
-                _this.tempFeedback.push("The AVERAGEtemperature reached between " + startDate + " - " + endDate + " is " + averageTempResult);
+                _this.tempFeedback.push("The MAXIMUM temperature reached between " + startDateString + " - " + endDateString + " is " + maxTemp);
+                _this.tempFeedback.push("The MINIMUM temperature reached between " + startDateString + " - " + endDateString + " is " + minTemp);
+                _this.tempFeedback.push("The AVERAGEtemperature reached between " + startDateString + " - " + endDateString + " is " + averageTempResult);
                 if (belowTarget > aboveTarget) {
                     _this.tempFeedback.push("The room is more frequently below expectations");
                 }
@@ -464,9 +477,9 @@ var ChartsComponent = /** @class */ (function () {
             //############## FEED BACK #######################
             _this.humidityFeedback = [];
             if (res['data'].length > 0) {
-                _this.humidityFeedback.push("The MAXIMUM temperature reached between " + startDate + " - " + endDate + " is " + maxHum);
-                _this.humidityFeedback.push("The MINIMUM temperature reached between " + startDate + " - " + endDate + " is " + minHum);
-                _this.humidityFeedback.push("The AVERAGE temperature reached between " + startDate + " - " + endDate + " is " + averageHumResult);
+                _this.humidityFeedback.push("The MAXIMUM temperature reached between " + startDateString + " - " + endDateString + " is " + maxHum);
+                _this.humidityFeedback.push("The MINIMUM temperature reached between " + startDateString + " - " + endDateString + " is " + minHum);
+                _this.humidityFeedback.push("The AVERAGE temperature reached between " + startDateString + " - " + endDateString + " is " + averageHumResult);
                 if (belowTargetHum > aboveTargetHum) {
                     _this.humidityFeedback.push("The rooms humidity is more frequently below expectations");
                 }
@@ -832,10 +845,10 @@ var GraphComponent = /** @class */ (function () {
                     },
                     pan: {
                         enabled: true,
-                        mode: 'y'
                     },
                     zoom: {
                         enabled: true,
+                        mode: 'y'
                     },
                     annotation: {
                         drawTime: 'afterDatasetsDraw',
@@ -890,7 +903,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"text-center\">\n  <h1 class=\"display-1\">Welcome to Energy Saver</h1>\n\n<div class=\"row \" *ngIf=\"currentStatus\">\n  <div class=\"col-6 col-sm-3\"><b>Property:</b> {{currentStatus[0]['room']}}</div>\n  <div class=\"col-6 col-sm-3\"><b>Occupancy:</b> {{currentStatus[0]['occupied']}}</div>\n  <div class=\"col-6 col-sm-3\"><b>DateTime:</b> {{currentStatus[0]['timestamp']* 1000 | date:'yy-MMM-dd h:mm '}}</div>\n\n  <!-- Force next columns to break to new line -->\n  <div class=\"w-150\"></div>\n  <h3>Inside Status</h3>\n\n  <div class=\"col-6 col-sm-3\"><b>Temperature:</b> {{currentStatus[0]['temp']}}&deg;C</div>\n  <div class=\"col-6 col-sm-3\"><b>Humidity:</b> {{currentStatus[0]['humidity']}}%</div>\n  <div class=\"col-6 col-sm-3\"><b>Lumos:</b> {{currentStatus[0]['light']}}</div><!--ng if for an image of a bulb or somthing-->\n\n  <!-- Force next columns to break to new line -->\n  <div class=\"w-150\"></div>\n\n\n  <div class=\"w-150\"></div>\n\n  <div class=\"col-6 col-sm-3\"><b>Outside Humidity:</b> {{currentStatus[0]['outside_humidity']}}</div>\n  <div class=\"col-6 col-sm-3\"><b>UV Level:</b> {{currentStatus[0]['outside_UV']}}</div>\n\n  <div class=\"col-6 col-sm-3\"><b>Weather:</b> <img src='{{path}}' height=\"30\" width=\"30\" /></div>\n  <div class=\"col-6 col-sm-3\"><b>Outside Temperature:</b> {{currentStatus[0]['outside_temp']}}&deg;C</div>\n\n  <div class=\"col-6 col-sm-3\"><b>Temperature:</b> {{futureData[0]['Temperature']}}</div>\n  <h3>Predictions in 1</h3>\n  <div class=\"col-6 col-sm-3\"><b>Humidity:</b> {{futureData[0]['Humidity']}}</div>\n  <div class=\"col-6 col-sm-3\"><b>Occupied:</b> {{futureData[0]['Occupancy']['in']}}</div>\n  <div class=\"col-6 col-sm-3\"><b>Empty:</b> {{futureData[0]['Occupancy']['out']}}</div>\n</div>\n</div>\n"
+module.exports = "<div class=\"container-fluid\">\n  <div class=\"text-center\" *ngIf=\"currentStatus\">\n    <h1 class=\"display-1\">Welcome to Energy Saver</h1>\n    <div class=\"w-150\"></div>\n    <h3>Property</h3>\n    <div ><b>Property:</b> {{currentStatus[0]['room']}}</div>\n    <div ><b>Occupancy:</b> {{currentStatus[0]['occupied']}}</div>\n    <div ><b>DateTime:</b> {{currentStatus[0]['timestamp']* 1000 | date:'yy-MMM-dd h:mm '}}</div>\n\n    <!-- Force next columns to break to new line -->\n    <div class=\"w-150\"></div>\n    <h3>Inside Status</h3>\n    <div ><b>Temperature:</b> {{currentStatus[0]['temp']}}&deg;C</div>\n    <div><b>Humidity:</b> {{currentStatus[0]['humidity']}}%</div>\n    <div ><b>Lumos:</b> {{currentStatus[0]['light']}}</div><!--ng if for an image of a bulb or somthing-->\n\n    <!-- Force next columns to break to new line -->\n    <div class=\"w-150\"></div>\n    <h3>Outside Status</h3>\n    <div ><b>Outside Humidity:</b> {{currentStatus[0]['outside_humidity']}}</div>\n    <div ><b>UV Level:</b> {{currentStatus[0]['outside_UV']}}</div>\n    <div ><b>Weather:</b> <img src='{{path}}' height=\"30\" width=\"30\" /></div>\n    <div ><b>Outside Temperature:</b> {{currentStatus[0]['outside_temp']}}&deg;C</div>\n\n    <div class=\"w-150\"></div>\n    <h3>Predictions in 1hr</h3>\n    <div ><b>Temperature:</b> <p>{{futureData[0]['Temperature']| number : '1.2-2'}}</p></div>\n    <div ><b>Humidity:</b><p> {{futureData[0]['Humidity']| number : '1.2-2'}}</p></div>\n    <div ><b>Occupied:</b><p> {{futureData[0]['Occupancy']['in']| number : '1.2-2'}}%</p></div>\n    <div ><b>Empty:</b><p> {{futureData[0]['Occupancy']['out']| number : '1.2-2'}}%</p></div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -990,7 +1003,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/navigation/navigation.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\">\n    <div class=\"container-fluid\">\n      <div class = \"navbar-header\">\n        <a class=\"navbar-brand\" href=\"#\">EnergySAVE</a>\n      </div>\n      <ul class=\"nav navbar-nav\">\n        <li class=\"icon-bar\"><a href=\"#\">Home</a></li>\n        <li class=\"icon-bar\"><a href ='/reports'>Reports</a></li>\n        <li class=\"icon-bar\"><a href ='/settings'>Settings</a></li>\n      </ul>\n      <ul class=\"nav navbar-nav navbar-right\">\n        <li class=\"dropdown\"><a class=\"dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" role =\"button\">Notifications <span class=\"badge\" *ngIf=\"notifications\">{{notifications.total}}</span>\n        <span class=\"caret\"></span></a>\n        <ul class=\"dropdown-menu\">\n          <li style=\"width:100%;\"*ngFor=\"let notifs of notifications.data.docs\" style=\"width:100%;\">{{notifs.notification}}</li>\n          <li><a routerLink=\"/allNotifications\">see More</a></li>\n        </ul>\n      </li>\n      </ul>\n    </div>\n</nav>\n\n<router-outlet></router-outlet>\n"
+module.exports = "<nav class=\"navbar navbar-default\">\n    <div class=\"container-fluid\">\n      <div class = \"navbar-header\">\n        <a class=\"navbar-brand\" href=\"#\">EnergySAVE</a>\n      </div>\n      <ul class=\"nav navbar-nav\">\n        <li class=\"icon-bar active-page\"><a href=\"#\">Home</a></li>\n        <li class=\"icon-bar \"><a href ='/reports'>Reports</a></li>\n        <li class=\"icon-bar\"><a href ='/settings'>Settings</a></li>\n      </ul>\n      <ul class=\"nav navbar-nav navbar-right\">\n        <li class=\"dropdown\"><a class=\"dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" role =\"button\">Notifications <span class=\"badge\" *ngIf=\"notifications\">{{notifications.total}}</span>\n        <span class=\"caret\"></span></a>\n        <ul class=\"dropdown-menu\" style=\"width:300px;\">\n          <div *ngFor=\"let notifs of notifications.data.docs\" style=\"padding-left:10px;padding-right:10px;\" class=\"view overlay\">\n            <li >{{notifs.notifications[0]|slice:0:30}}...</li>\n            <hr>\n          </div>\n          <li><a routerLink=\"/allNotifications\">see More</a></li>\n        </ul>\n      </li>\n      </ul>\n    </div>\n</nav>\n\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -1070,7 +1083,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/notifications/notifications.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-responsive\">\n  <thead class=\"blue-grey\">\n  <tr>\n    <th scope=\"col\">#</th>\n    <th scope=\"col\" style=\"max-width:50%\">Description</th><span></span>\n    <th scope=\"col\">Time</th><span></span>\n    <th scope=\"col\">remove</th>\n  </tr>\n  </thead>\n  <tbody class=\"table-striped table-hover\" *ngFor=\"let notifs of allNotifications.data.docs | paginate:{ itemsPerPage :5, currentPage: p}\">\n    <tr>\n      <th scope=\"row\"> </th>\n      <td style=\"max-width:50%\">{{notifs.notifications}}</td><span></span>\n      <td>{{notifs.timestamp * 1000 | date:'yyyy-MM-dd HH:mm:ss '}}</td><span></span>\n      <td ><button class=\"btn btn-primary\" (click)= 'deleteNotification($event)' value='{{notifs._id}},{{notifs._rev}}'>remove</button></td>\n    </tr>\n  </tbody>\n</table>\n<pagination-controls (pageChange)=\"p =$event\" class=\"text-center\"></pagination-controls>\n"
+module.exports = "<table class=\"table table-responsive\">\n  <thead class=\"blue-grey\">\n  <tr>\n    <th scope=\"col\">#</th>\n    <th scope=\"col\" style=\"max-width:50%\">Description</th><span></span>\n    <th scope=\"col\">Time</th><span></span>\n    <th scope=\"col\">remove</th>\n  </tr>\n  </thead>\n  <tbody class=\"table-striped table-hover\" *ngFor=\"let notifs of allNotifications.data.docs | paginate:{ itemsPerPage :5, currentPage: p}\">\n    <tr>\n      <th scope=\"row\"> </th>\n      <td style=\"max-width:50%\">{{notifs.notifications}}</td><span></span>\n      <td>{{notifs.timestamp * 1000 | date:'yyyy-MM-dd HH:mm:ss '}}</td><span></span>\n      <td ><button class=\"btn btn-primary\" (click)= 'deleteNotification($event)' value='{{notifs._id}},{{notifs._rev}}'>Remove(Double-Click)</button></td>\n    </tr>\n  </tbody>\n</table>\n<pagination-controls (pageChange)=\"p =$event\" class=\"text-center\"></pagination-controls>\n"
 
 /***/ }),
 

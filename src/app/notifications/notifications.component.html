@@ -12,7 +12,7 @@
       <th scope="row"> </th>
       <td style="max-width:50%">{{notifs.notifications}}</td><span></span>
       <td>{{notifs.timestamp * 1000 | date:'yyyy-MM-dd HH:mm:ss '}}</td><span></span>
-      <td ><button class="btn btn-primary" (click)= 'deleteNotification($event)' value='{{notifs._id}},{{notifs._rev}}'>remove</button></td>
+      <td ><button class="btn btn-primary" (click)= 'deleteNotification($event)' value='{{notifs._id}},{{notifs._rev}}'>Remove(Double-Click)</button></td>
     </tr>
   </tbody>
 </table>
