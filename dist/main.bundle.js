@@ -187,7 +187,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".canvas .canvas2 .canvas3 .canvas4 {\r\n  margin:auto;\r\n}\r\n", ""]);
+exports.push([module.i, ".chart{\r\n      padding-left: 0;\r\n      padding-right: 0;\r\n      margin-left: auto;\r\n      margin-right: auto;\r\n      display: block;\r\n\r\n}\r\n.grid{\r\n      padding-left: 10%;\r\n      padding-right: 10%;\r\n\r\n}\r\n.feedbackText{\r\n  color:black;\r\n  font-size:16px;\r\n  font-family: \"Times New Roman\", Times, serif;\r\n}\r\n", ""]);
 
 // exports
 
@@ -200,7 +200,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/charts/charts.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"graph\" class=\"text-center container-fluid\">\n  <form #dateChartForm=\"ngForm\" (ngSubmit)=\"getChartData(dateChartForm.value)\">\n    <label>Start Date</label>\n    <input type=\"date\" name=\"startDate\" ngModel/>\n    <label>End Date</label>\n    <input type=\"date\" name=\"endDate\"  ngModel/>\n    <button type=\"submit\" class=\"btn btn-primary\" [disabled]=\"!dateChartForm.form.valid\">Submit</button>\n  </form>\n  <div class=\"text-center\" *ngIf=\"date1\">\n    <h3 class=\"muted\">{{date1}} / {{date2}}</h3>\n  </div>\n\n  <div class=\"container-fluid\" style=\"margin:auto; display:inline-block\">\n    <div class=\"text-center\" >\n      <h3>Lighting</h3>\n      <canvas id=\"canvas4\" >{{chart4}}</canvas>\n      <div *ngFor=\"let feedback of lightingFeedback\">\n        <p>{{feedback}}</p>\n      </div>\n    </div>\n    <div class=\"text-center\" >\n      <h3>Occupancy</h3>\n      <canvas id=\"canvas\" >{{chart}}</canvas>\n      <div *ngFor=\"let feedback of occupancyFeedback\">\n        <p>{{feedback}}</p>\n      </div>\n    </div>\n    <div class=\"text-center\" >\n      <h3>Temperature</h3>\n      <canvas id=\"canvas2\" >{{chart2}}</canvas>\n      <div *ngFor=\"let feedback of tempFeedback\">\n        <p>{{feedback}}</p>\n      </div>\n    </div>\n    <div class=\"text-center\" >\n      <h3>Humidity</h3>\n      <canvas id=\"canvas3\" >{{chart3}}</canvas>\n      <div *ngFor=\"let feedback of humidityFeedback\">\n        <p>{{feedback}}</p>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div id=\"graph\" class=\"text-center container-fluid\">\n\n  <form #dateChartForm=\"ngForm\" (ngSubmit)=\"getChartData(dateChartForm.value)\">\n    <label>Start Date</label>\n    <input type=\"date\" name=\"startDate\" ngModel/>\n    <label>End Date</label>\n    <input type=\"date\" name=\"endDate\"  ngModel/>\n    <button type=\"submit\" class=\"btn btn-primary\" [disabled]=\"!dateChartForm.form.valid\">Submit</button>\n  </form>\n\n  <div class=\"text-center\" *ngIf=\"date1\">\n    <h3 class=\"muted\">{{date1}} / {{date2}}</h3>\n  </div>\n\n  <div class=\"container-fluid grid\" style=\"margin:auto; display:inline-block\">\n    <div class=\"row\">\n\n      <div class=\"col-xs-5\">\n        <div class=\"card\" >\n          <canvas id=\"canvas4\"class=\"chart\" >{{chart4}}</canvas>\n          <h3>Lighting</h3>\n          <div class=\"feedbackText\"*ngFor=\"let feedback of lightingFeedback\">\n            <p>{{feedback}}</p>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"col-xs-5\">\n        <div class=\"card\" >\n          <canvas id=\"canvas\" class=\"card-top chart\">{{chart}}</canvas>\n          <div class=\"card-body\">\n            <h3 class=\"card-title\">Occupancy</h3>\n            <div class=\"feedbackText\" *ngFor=\"let feedback of occupancyFeedback\">\n              <p>{{feedback}}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-xs-5\">\n        <div class=\"text-center\" >\n        <canvas id=\"canvas2\" class=\"chart\">{{chart2}}</canvas>\n        <h3>Temperature</h3>\n        <div class=\"feedbackText\"*ngFor=\"let feedback of tempFeedback\">\n          <p>{{feedback}}</p>\n        </div>\n        </div>\n      </div>\n      <div class=\"col-xs-5\">\n         <div class=\"text-center\" >\n          <canvas id=\"canvas3\" class=\"chart\">{{chart3}}</canvas>\n          <h3>Humidity</h3>\n          <div class=\"feedbackText\" *ngFor=\"let feedback of humidityFeedback\">\n            <p>{{feedback}}</p>\n          </div>\n        </div>\n      </div>\n    </div>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -298,6 +298,10 @@ var ChartsComponent = /** @class */ (function () {
             else {
                 startDateString = new Date(startDate);
                 endDateString = new Date(endDate);
+                startDateString = startDateString.toString();
+                endDateString = endDateString.toString();
+                startDateString = startDateString.substring(0, 10);
+                endDateString = endDateString.substring(0, 10);
             }
             //################### OCCUPANCY LOOP CHECK ############################
             var occupancyIn = 0;
@@ -565,13 +569,6 @@ var ChartsComponent = /** @class */ (function () {
                 _this.lightingFeedback.push("NO Data Available");
             }
             ;
-            // ################## TIMEING ###############################
-            var currentTime = +new Date();
-            var currentDate = new Date();
-            var seconds = (currentDate.getHours() * 3600000) + (currentDate.getMinutes() * 60000);
-            console.log(currentTime);
-            console.log(currentDate.getHours());
-            console.log(currentDate.getMinutes());
         });
         /*END OF CHART METHOD*/
     };
@@ -903,7 +900,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <div class=\"text-center\" *ngIf=\"currentStatus\">\n    <h1 class=\"display-1\">Welcome to Energy Saver</h1>\n    <div class=\"w-150\"></div>\n    <h3>Property</h3>\n    <div ><b>Property:</b> {{currentStatus[0]['room']}}</div>\n    <div ><b>Occupancy:</b> {{currentStatus[0]['occupied']}}</div>\n    <div ><b>DateTime:</b> {{currentStatus[0]['timestamp']* 1000 | date:'yy-MMM-dd h:mm '}}</div>\n\n    <!-- Force next columns to break to new line -->\n    <div class=\"w-150\"></div>\n    <h3>Inside Status</h3>\n    <div ><b>Temperature:</b> {{currentStatus[0]['temp']}}&deg;C</div>\n    <div><b>Humidity:</b> {{currentStatus[0]['humidity']}}%</div>\n    <div ><b>Lumos:</b> {{currentStatus[0]['light']}}</div><!--ng if for an image of a bulb or somthing-->\n\n    <!-- Force next columns to break to new line -->\n    <div class=\"w-150\"></div>\n    <h3>Outside Status</h3>\n    <div ><b>Outside Humidity:</b> {{currentStatus[0]['outside_humidity']}}</div>\n    <div ><b>UV Level:</b> {{currentStatus[0]['outside_UV']}}</div>\n    <div ><b>Weather:</b> <img src='{{path}}' height=\"30\" width=\"30\" /></div>\n    <div ><b>Outside Temperature:</b> {{currentStatus[0]['outside_temp']}}&deg;C</div>\n\n    <div class=\"w-150\"></div>\n    <h3>Predictions in 1hr</h3>\n    <div ><b>Temperature:</b> <p>{{futureData[0]['Temperature']| number : '1.2-2'}}</p></div>\n    <div ><b>Humidity:</b><p> {{futureData[0]['Humidity']| number : '1.2-2'}}</p></div>\n    <div ><b>Occupied:</b><p> {{futureData[0]['Occupancy']['in']| number : '1.2-2'}}%</p></div>\n    <div ><b>Empty:</b><p> {{futureData[0]['Occupancy']['out']| number : '1.2-2'}}%</p></div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container-fluid\">\n  <div class=\"text-center\" *ngIf=\"currentStatus\">\n    <h1 class=\"display-1\">Welcome to Energy Saver</h1>\n    <div class=\"w-150\"></div>\n    <h3>Property</h3>\n    <div ><b>Property:</b> {{currentStatus[0]['room']}}</div>\n    <div ><b>Occupancy:</b> {{currentStatus[0]['occupied']}}</div>\n    <div ><b>DateTime:</b> {{currentStatus[0]['timestamp']* 1000 | date:'yy-MMM-dd h:mm '}}</div>\n\n    <!-- Force next columns to break to new line -->\n    <div class=\"w-150\"></div>\n    <h3>Inside Status</h3>\n    <div ><b>Temperature:</b> {{currentStatus[0]['temp']}}&deg;C</div>\n    <div><b>Humidity:</b> {{currentStatus[0]['humidity']}}%</div>\n    <div ><b>Lumos:</b> {{currentStatus[0]['light']}}</div><!--ng if for an image of a bulb or somthing-->\n\n    <!-- Force next columns to break to new line -->\n    <div class=\"w-150\"></div>\n    <h3>Outside Status</h3>\n    <div ><b>Outside Humidity:</b> {{currentStatus[0]['outside_humidity']}}</div>\n    <div ><b>UV Level:</b> {{currentStatus[0]['outside_UV']}}</div>\n    <div ><b>Weather:</b> <img src='{{path}}' height=\"30\" width=\"30\" /></div>\n    <div ><b>Outside Temperature:</b> {{currentStatus[0]['outside_temp']}}&deg;C</div>\n\n    <div class=\"w-150\"></div>\n    <div class=\"card\" style=\"width: 18rem;\">\n      <img class=\"card-img-top\" src=\"...\" alt=\"Future Info\">\n      <div class=\"card-body\">\n        <h4 class=\"card-title\">Predictions in 1hr</h4>\n        <p class=\"card-text\">The future prediction in  an hours time.</p>\n      </div>\n      <ul class=\"list-group list-group-flush\">\n        <li><b>Temperature:</b>\n        <p>{{futureData[0]['Temperature']| number : '1.2-2'}}</p></li>\n        <li><b>Humidity:</b><p> {{futureData[0]['Humidity']| number : '1.2-2'}}</p></li>\n        <li><b>Empty:</b><p> {{futureData[0]['Occupancy']['out']| number : '1.2-2'}}%</p></li>\n      </ul>\n    </div>\n    <div ><b>Humidity:</b><p> {{futureData[0]['Humidity']| number : '1.2-2'}}</p></div>\n    <div ><b>Occupied:</b><p> {{futureData[0]['Occupancy']['in']| number : '1.2-2'}}%</p></div>\n    <div ><b>Empty:</b><p> {{futureData[0]['Occupancy']['out']| number : '1.2-2'}}%</p></div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -990,7 +987,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".icon-bar:hover {\r\n  opacity:0.5;\r\n  color:black;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1003,7 +1000,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/navigation/navigation.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\">\n    <div class=\"container-fluid\">\n      <div class = \"navbar-header\">\n        <a class=\"navbar-brand\" href=\"#\">EnergySAVE</a>\n      </div>\n      <ul class=\"nav navbar-nav\">\n        <li class=\"icon-bar active-page\"><a href=\"#\">Home</a></li>\n        <li class=\"icon-bar \"><a href ='/reports'>Reports</a></li>\n        <li class=\"icon-bar\"><a href ='/settings'>Settings</a></li>\n      </ul>\n      <ul class=\"nav navbar-nav navbar-right\">\n        <li class=\"dropdown\"><a class=\"dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" role =\"button\">Notifications <span class=\"badge\" *ngIf=\"notifications\">{{notifications.total}}</span>\n        <span class=\"caret\"></span></a>\n        <ul class=\"dropdown-menu\" style=\"width:300px;\">\n          <div *ngFor=\"let notifs of notifications.data.docs\" style=\"padding-left:10px;padding-right:10px;\" class=\"view overlay\">\n            <li >{{notifs.notifications[0]|slice:0:30}}...</li>\n            <hr>\n          </div>\n          <li><a routerLink=\"/allNotifications\">see More</a></li>\n        </ul>\n      </li>\n      </ul>\n    </div>\n</nav>\n\n<router-outlet></router-outlet>\n"
+module.exports = "<nav class=\"navbar navbar-default\">\n    <div class=\"container-fluid\">\n      <div class = \"navbar-header\">\n        <a class=\"navbar-brand\" href=\"#\">EnergySAVE</a>\n      </div>\n      <ul class=\"nav navbar-nav\">\n        <li class=\"icon-bar \"><a href=\"#\">Home</a></li>\n        <li class=\"icon-bar \"><a href ='/reports'>Reports</a></li>\n        <li class=\"icon-bar\"><a href ='/settings'>Settings</a></li>\n      </ul>\n      <ul class=\"nav navbar-nav navbar-right\">\n        <li class=\"dropdown\"><a class=\"dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" role =\"button\">Notifications <span class=\"badge\" *ngIf=\"notifications\">{{notifications.total}}</span>\n        <span class=\"caret\"></span></a>\n        <ul class=\"dropdown-menu\" style=\"width:300px;\">\n          <div *ngFor=\"let notifs of notifications.data.docs\" style=\"padding-left:10px;padding-right:10px;\" class=\"view overlay\">\n            <li >{{notifs.notifications[0]|slice:0:30}}...</li>\n            <hr>\n          </div>\n          <li><a routerLink=\"/allNotifications\">see More</a></li>\n        </ul>\n      </li>\n      </ul>\n    </div>\n</nav>\n\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -1115,8 +1112,10 @@ var NotificationsComponent = /** @class */ (function () {
         var _this = this;
         console.log(event.target.value);
         this._dataService.deleteNotifications(event.target.value)
-            .subscribe(function (res) { return _this.deleteConfirmation = res; });
-        this.getNotifications();
+            .subscribe(function (res) {
+            _this.deleteConfirmation = res;
+            _this.getNotifications();
+        });
     };
     NotificationsComponent.prototype.getNotifications = function () {
         var _this = this;
@@ -1149,7 +1148,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".container:hover .overlay{\r\n  opacity:0.8;\r\n}\r\n.container-fluid{\r\n    text-align: center;\r\n    margin:-40px;\r\n}\r\n.container{\r\n  float:left;\r\n  width:45%;\r\n  text-align: center;\r\n  margin:40px;\r\n}\r\n.overlay{\r\n  width:45%;\r\n  height:90%;\r\n  opacity:0;\r\n  -webkit-transition:.8s ease;\r\n  transition:.8s ease;\r\n  background-color:#daec4c;\r\n  position:absolute;\r\n  top:55px;\r\n  border-radius:10;\r\n  border-style:outset;\r\n}\r\n.image {\r\n  display: block;\r\n  width: 100%;\r\n  height: 80%;\r\n}\r\n.text{\r\n  color: black;\r\n  font-size: 20px;\r\n  position: absolute;\r\n  top: 30%;\r\n  text-align: center;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1162,7 +1161,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/reports/reports.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\r\n<a href=\"/graph\"><div  style=\"background-color:green; float:left;width:50%; height:100%;\">\r\n<h1>Graph</h1>\r\n</div></a>\r\n<a href=\"/charts\"><div  style=\"background-color:blue; float:left;width:50%; height:100%;\">\r\n<h1>Charts</h1>\r\n</div></a>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid\">\r\n<a href=\"/graph\">\r\n    <div class=\"container\">\r\n      <img src=\"../assets/graphpic.PNG\" class=\"image\">\r\n      <div class=\"overlay\">\r\n        <div class=\"text\">\r\n          <p>Line Graphs</p>\r\n          <p>View Temperature and Humidity on a line graph, displaying Inside Status, Outside Status and  Target status.</p>\r\n        </div>\r\n      </div>\r\n    </div>\r\n</a>\r\n\r\n<a href=\"/charts\">\r\n  <div class=\"container\">\r\n    <img src=\"../assets/graphpic.PNG\" class=\"image\">\r\n    <div class=\"overlay\">\r\n      <div class=\"text\">\r\n        <p>Pie Charts</p>\r\n        <p>Pie Charts displaying usage consumption and feedback on its use.</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</a>\r\n</div>\r\n"
 
 /***/ }),
 

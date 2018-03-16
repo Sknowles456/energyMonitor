@@ -23,8 +23,19 @@
     <div ><b>Outside Temperature:</b> {{currentStatus[0]['outside_temp']}}&deg;C</div>
 
     <div class="w-150"></div>
-    <h3>Predictions in 1hr</h3>
-    <div ><b>Temperature:</b> <p>{{futureData[0]['Temperature']| number : '1.2-2'}}</p></div>
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="..." alt="Future Info">
+      <div class="card-body">
+        <h4 class="card-title">Predictions in 1hr</h4>
+        <p class="card-text">The future prediction in  an hours time.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li><b>Temperature:</b>
+        <p>{{futureData[0]['Temperature']| number : '1.2-2'}}</p></li>
+        <li><b>Humidity:</b><p> {{futureData[0]['Humidity']| number : '1.2-2'}}</p></li>
+        <li><b>Empty:</b><p> {{futureData[0]['Occupancy']['out']| number : '1.2-2'}}%</p></li>
+      </ul>
+    </div>
     <div ><b>Humidity:</b><p> {{futureData[0]['Humidity']| number : '1.2-2'}}</p></div>
     <div ><b>Occupied:</b><p> {{futureData[0]['Occupancy']['in']| number : '1.2-2'}}%</p></div>
     <div ><b>Empty:</b><p> {{futureData[0]['Occupancy']['out']| number : '1.2-2'}}%</p></div>

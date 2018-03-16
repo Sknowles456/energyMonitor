@@ -17,8 +17,6 @@ export class ChartsComponent implements OnInit {
   chart2:any;
   chart3:any;
   chart4:any;
-  chart5:any;
-  chart6:any;
   cont;
   graphData:any;
   occupancyFeedback=[];
@@ -87,6 +85,10 @@ export class ChartsComponent implements OnInit {
         }else{
           startDateString = new Date(startDate);
           endDateString = new Date(endDate);
+          startDateString = startDateString.toString();
+          endDateString = endDateString.toString();
+          startDateString = startDateString.substring(0,10);
+          endDateString = endDateString.substring(0,10);
         }
 
 //################### OCCUPANCY LOOP CHECK ############################
@@ -333,13 +335,6 @@ export class ChartsComponent implements OnInit {
     else{
       this.lightingFeedback.push("NO Data Available");
     };
-// ################## TIMEING ###############################
-       var currentTime = +new Date();
-       var currentDate = new Date();
-       var seconds = (currentDate.getHours()*3600000) + (currentDate.getMinutes()*60000);
-       console.log(currentTime);
-       console.log(currentDate.getHours());
-       console.log(currentDate.getMinutes());
 
       });
       /*END OF CHART METHOD*/

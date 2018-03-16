@@ -10,9 +10,9 @@ var Cloudant = require('cloudant');
 
 var app = express();
 
-
  var pyOptions = {
-   mode:'text', // return text based responses from child process
+  pythonOptions: ['-u'],
+   mode:'text' // return text based responses from child process
  };
 // child process script on the server to predict future state of the envrionment.
 function forecast(){
@@ -23,6 +23,7 @@ function forecast(){
     console.log(result); // display all prints from the python script.
   });
 }
+
 function notifications(){
   console.log("Staring execution of Notifications at"+ new Date());
   pythonShell.run('models/notifications.py',pyOptions, function (err,result) {
@@ -31,7 +32,7 @@ function notifications(){
     console.log(result); // display all prints from the python script.
   });
 }
-setInterval(forecast, 150000); // run the script every 5 minutes, as this is when new data is pushed to DB.
+forecast();
 setInterval(notifications, 300000);
 
 app.set('views', path.join(__dirname, 'views'));

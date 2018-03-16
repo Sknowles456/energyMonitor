@@ -15,8 +15,11 @@ export class NotificationsComponent implements OnInit {
     deleteNotification(event){
       console.log(event.target.value);
       this._dataService.deleteNotifications(event.target.value)
-      .subscribe(res => this.deleteConfirmation = res);
-      this.getNotifications();
+      .subscribe(res => {
+        this.deleteConfirmation = res;
+        this.getNotifications();
+      });
+
 
     }
     getNotifications(){

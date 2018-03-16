@@ -13,12 +13,7 @@ import 'chartjs-plugin-annotation';
 
 export class GraphComponent implements OnInit {
   userData:any;
-  chart:any;
-  chart2:any;
-  chart3:any;
-  chart4:any;
-  chart5:any;
-  chart6:any;
+  chart;
   cont;
 
   constructor(private _dataService: DataService, private _element: ElementRef) {

@@ -1,4 +1,5 @@
 <div id="graph" class="text-center container-fluid">
+
   <form #dateChartForm="ngForm" (ngSubmit)="getChartData(dateChartForm.value)">
     <label>Start Date</label>
     <input type="date" name="startDate" ngModel/>
@@ -6,38 +7,56 @@
     <input type="date" name="endDate"  ngModel/>
     <button type="submit" class="btn btn-primary" [disabled]="!dateChartForm.form.valid">Submit</button>
   </form>
+
   <div class="text-center" *ngIf="date1">
     <h3 class="muted">{{date1}} / {{date2}}</h3>
   </div>
 
-  <div class="container-fluid" style="margin:auto; display:inline-block">
-    <div class="text-center" >
-      <h3>Lighting</h3>
-      <canvas id="canvas4" >{{chart4}}</canvas>
-      <div *ngFor="let feedback of lightingFeedback">
-        <p>{{feedback}}</p>
+  <div class="container-fluid grid" style="margin:auto; display:inline-block">
+    <div class="row">
+
+      <div class="col-xs-5">
+        <div class="card" >
+          <canvas id="canvas4"class="chart" >{{chart4}}</canvas>
+          <h3>Lighting</h3>
+          <div class="feedbackText"*ngFor="let feedback of lightingFeedback">
+            <p>{{feedback}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-5">
+        <div class="card" >
+          <canvas id="canvas" class="card-top chart">{{chart}}</canvas>
+          <div class="card-body">
+            <h3 class="card-title">Occupancy</h3>
+            <div class="feedbackText" *ngFor="let feedback of occupancyFeedback">
+              <p>{{feedback}}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="text-center" >
-      <h3>Occupancy</h3>
-      <canvas id="canvas" >{{chart}}</canvas>
-      <div *ngFor="let feedback of occupancyFeedback">
-        <p>{{feedback}}</p>
+    <div class="row">
+      <div class="col-xs-5">
+        <div class="text-center" >
+        <canvas id="canvas2" class="chart">{{chart2}}</canvas>
+        <h3>Temperature</h3>
+        <div class="feedbackText"*ngFor="let feedback of tempFeedback">
+          <p>{{feedback}}</p>
+        </div>
+        </div>
+      </div>
+      <div class="col-xs-5">
+         <div class="text-center" >
+          <canvas id="canvas3" class="chart">{{chart3}}</canvas>
+          <h3>Humidity</h3>
+          <div class="feedbackText" *ngFor="let feedback of humidityFeedback">
+            <p>{{feedback}}</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="text-center" >
-      <h3>Temperature</h3>
-      <canvas id="canvas2" >{{chart2}}</canvas>
-      <div *ngFor="let feedback of tempFeedback">
-        <p>{{feedback}}</p>
-      </div>
-    </div>
-    <div class="text-center" >
-      <h3>Humidity</h3>
-      <canvas id="canvas3" >{{chart3}}</canvas>
-      <div *ngFor="let feedback of humidityFeedback">
-        <p>{{feedback}}</p>
-      </div>
-    </div>
+
   </div>
 </div>
