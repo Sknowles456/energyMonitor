@@ -1,17 +1,17 @@
 <div id="graph" class="text-center">
   <form #dateForm="ngForm" (ngSubmit)="getGraphData(dateForm.value)">
-    <label>Start Date</label>
+    <label><b>Start Date</b></label>
     <input type="date" name="startDate" value="0" ngModel/>
-    <label>End Date</label>
+    <label><b>End Date</b></label>
     <input type="date" name="endDate" value="0" ngModel/>
     <select name="graphType" ngModel>
       <option value="Temperature">Temperature</option>
       <option value="Humidity">Humidity</option>
     </select>
-    <button type="submit" class="btn btn-primary" [disabled]="!dateForm.form.valid">Submit</button>
+    <button type="submit" class="btn btn-dark" [disabled]="!dateForm.form.valid">Submit</button>
   </form>
   <div>
-    <button class="btn btn-primary"  value='Charts' (click)="resetZoom()">Reset Zoom/Pan</button>
+    <button class="btn btn-dark"  value='Charts' (click)="resetZoom()">Reset Zoom/Pan</button>
   </div>
   <div >
     <canvas id="canvas">{{chart}}</canvas>

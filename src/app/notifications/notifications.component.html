@@ -1,5 +1,6 @@
-<table class="table table-responsive">
-  <thead class="blue-grey">
+
+<table class="table table-responsive" >
+  <thead class="thead-dark">
   <tr>
     <th scope="col">#</th>
     <th scope="col" style="max-width:50%">Description</th><span></span>
@@ -10,9 +11,9 @@
   <tbody class="table-striped table-hover" *ngFor="let notifs of allNotifications.data.docs | paginate:{ itemsPerPage :5, currentPage: p}">
     <tr>
       <th scope="row"> </th>
-      <td style="max-width:50%">{{notifs.notifications}}</td><span></span>
-      <td>{{notifs.timestamp * 1000 | date:'yyyy-MM-dd HH:mm:ss '}}</td><span></span>
-      <td ><button class="btn btn-primary" (click)= 'deleteNotification($event)' value='{{notifs._id}},{{notifs._rev}}'>Remove(Double-Click)</button></td>
+      <td style="width:70%">{{notifs.notifications}}</td><span></span>
+      <td >{{notifs.timestamp * 1000 | date:'yyyy-MM-dd HH:mm:ss '}}</td><span></span>
+      <td ><button class="btn btn-danger" (click)= 'deleteNotification($event)' value='{{notifs._id}},{{notifs._rev}}'>Remove</button></td>
     </tr>
   </tbody>
 </table>

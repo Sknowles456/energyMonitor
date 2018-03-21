@@ -76,6 +76,7 @@ router.get('/notifications', function(req, res, next){
     }
 
     response.data = notifs;
+    console.log("notifs", notifs);
     response.total = notifs.docs.length.toString();
     res.json(response);
     console.log("Response has been sent back");

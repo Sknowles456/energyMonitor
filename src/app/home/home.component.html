@@ -1,43 +1,53 @@
-<div class="container-fluid">
-  <div class="text-center" *ngIf="currentStatus">
-    <h1 class="display-1">Welcome to Energy Saver</h1>
+<div class="container-fluid ">
+  <div class="text-center row" *ngIf="currentStatus">
     <div class="w-150"></div>
-    <h3>Property</h3>
-    <div ><b>Property:</b> {{currentStatus[0]['room']}}</div>
-    <div ><b>Occupancy:</b> {{currentStatus[0]['occupied']}}</div>
-    <div ><b>DateTime:</b> {{currentStatus[0]['timestamp']* 1000 | date:'yy-MMM-dd h:mm '}}</div>
+    <div class="col-md-4 cardStyle">
+    <div class="card ">
+      <img class="card-img-top " src="../assets/Housingstatus.jpeg" alt="Internal Info">
+      <div class="card-body ">
+        <h4 class="card-title">Home Status</h4>
+        <p class="card-text">The current status of the home.</p>
+      </div>
+      <ul class="list-group list-group-flush list-unstyled">
+        <li><b>Temperature:</b><p> {{currentStatus[0]['temp']}}&deg;C</p></li>
+        <li><b>Humidity:</b><p> {{currentStatus[0]['humidity']}}%</p></li>
+        <li><b>Lumos:</b><p>{{currentStatus[0]['light']}}</p></li>
+        <li><b>Occupancy:</b> <p>{{currentStatus[0]['occupied']}}</p></li>
+      </ul>
+    </div>
+  </div>
 
-    <!-- Force next columns to break to new line -->
-    <div class="w-150"></div>
-    <h3>Inside Status</h3>
-    <div ><b>Temperature:</b> {{currentStatus[0]['temp']}}&deg;C</div>
-    <div><b>Humidity:</b> {{currentStatus[0]['humidity']}}%</div>
-    <div ><b>Lumos:</b> {{currentStatus[0]['light']}}</div><!--ng if for an image of a bulb or somthing-->
+  <div class="col-md-4 cardStyle">
+    <div class="card" >
+      <img class="card-img-top " src="../assets/morningstatus.jpeg" alt="External Info">
+      <div class="card-body ">
+        <h4 class="card-title">Outside Status</h4>
+        <p class="card-text">The reading from the weather services.</p>
+      </div>
+      <ul class="list-group list-group-flush list-unstyled">
+        <li><b>Weather:</b> <p><img src='{{path}}' height="60" width="90" /></p></li>
+        <li><b>Outside Humidity:</b><p> {{currentStatus[0]['outside_humidity']}}</p></li>
+        <li><b>UV Level:</b><p>{{currentStatus[0]['outside_UV']}}</p></li>
+        <li><b>Outside Temperature:</b><p>{{currentStatus[0]['outside_temp']}}&deg;C</p></li>
+      </ul>
+    </div>
+  </div>
 
-    <!-- Force next columns to break to new line -->
-    <div class="w-150"></div>
-    <h3>Outside Status</h3>
-    <div ><b>Outside Humidity:</b> {{currentStatus[0]['outside_humidity']}}</div>
-    <div ><b>UV Level:</b> {{currentStatus[0]['outside_UV']}}</div>
-    <div ><b>Weather:</b> <img src='{{path}}' height="30" width="30" /></div>
-    <div ><b>Outside Temperature:</b> {{currentStatus[0]['outside_temp']}}&deg;C</div>
-
-    <div class="w-150"></div>
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Future Info">
+  <div class="col-md-4 cardStyle">
+    <div class="card " >
+      <img class="card-img-top homeImages" src="../assets/futurestatus.jpeg" alt="Future Info">
       <div class="card-body">
         <h4 class="card-title">Predictions in 1hr</h4>
         <p class="card-text">The future prediction in  an hours time.</p>
       </div>
-      <ul class="list-group list-group-flush">
+      <ul class="list-group list-group-flush list-unstyled">
         <li><b>Temperature:</b>
         <p>{{futureData[0]['Temperature']| number : '1.2-2'}}</p></li>
         <li><b>Humidity:</b><p> {{futureData[0]['Humidity']| number : '1.2-2'}}</p></li>
+        <li><b>Occupied:</b><p> {{futureData[0]['Occupancy']['in']| number : '1.2-2'}}%</p></li>
         <li><b>Empty:</b><p> {{futureData[0]['Occupancy']['out']| number : '1.2-2'}}%</p></li>
       </ul>
     </div>
-    <div ><b>Humidity:</b><p> {{futureData[0]['Humidity']| number : '1.2-2'}}</p></div>
-    <div ><b>Occupied:</b><p> {{futureData[0]['Occupancy']['in']| number : '1.2-2'}}%</p></div>
-    <div ><b>Empty:</b><p> {{futureData[0]['Occupancy']['out']| number : '1.2-2'}}%</p></div>
   </div>
+</div>
 </div>
