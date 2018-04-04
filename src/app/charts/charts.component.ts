@@ -85,11 +85,11 @@ export class ChartsComponent implements OnInit {
         }else{
           startDateString = new Date(startDate);
           endDateString = new Date(endDate);
-          startDateString = startDateString.toString();
-          endDateString = endDateString.toString();
-          startDateString = startDateString.substring(0,10);
-          endDateString = endDateString.substring(0,10);
         }
+        startDateString = startDateString.toString();
+        endDateString = endDateString.toString();
+        startDateString = startDateString.substring(0,10);
+        endDateString = endDateString.substring(0,10);
 
 //################### OCCUPANCY LOOP CHECK ############################
         var occupancyIn = 0;
@@ -122,7 +122,7 @@ export class ChartsComponent implements OnInit {
 //########### FEED BACK #######################
       if(res['data'].length > 0){
         this.occupancyFeedback = [];
-        this.occupancyFeedback.push("The Property has been vacant for approximatley "+(occupancyOut *  5)+" minutes between"+startDateString+" and "+endDateString);
+        this.occupancyFeedback.push("The Property has been vacant for approximatley "+(occupancyOut *  5 / 60)+" hours between"+startDateString+" and "+endDateString);
         this.occupancyFeedback.push("The Property has NOT been vacant for approximatley "+(occupancyIn *  5)+" minutes between"+startDateString+" and "+endDateString);
          if(occupancyOut > occupancyIn){
            this.occupancyFeedback.push("More time is spent outside of this Room");
@@ -165,6 +165,7 @@ export class ChartsComponent implements OnInit {
 
        };
        var averageTempResult = averageTemp/res['data'].length;
+       var averageTempResultSubed = averageTempResult.toString().substring(0,4);
 //########################### CHART 2 Temperature Targets #############################"
       this.chart2 = new Chart(ctx,{
         type:'pie',
@@ -188,7 +189,7 @@ export class ChartsComponent implements OnInit {
   if(res['data'].length > 0){
       this.tempFeedback.push("The MAXIMUM temperature reached between "+ startDateString +" - "+endDateString+" is " + maxTemp);
       this.tempFeedback.push("The MINIMUM temperature reached between "+ startDateString +" - "+endDateString+" is " + minTemp);
-      this.tempFeedback.push("The AVERAGEtemperature reached between "+ startDateString +" - "+endDateString+" is " + averageTempResult);
+      this.tempFeedback.push("The AVERAGEtemperature reached between "+ startDateString +" - "+endDateString+" is " + averageTempResultSubed);
       if(belowTarget > aboveTarget){
         this.tempFeedback.push("The room is more frequently below expectations");
       }
@@ -231,6 +232,7 @@ export class ChartsComponent implements OnInit {
     console.log("avergaehum" +averageHum);
     console.log("reslength" + res['data'].length);
     var averageHumResult = averageHum / res['data'].length;
+    var averageHumResultSubed = averageHumResult.toString().substring(0,4);
 //############################### Humidity Chart ########################################
     this.chart3 = new Chart(ctx3,{
       type:'pie',
@@ -254,7 +256,7 @@ export class ChartsComponent implements OnInit {
   if(res['data'].length > 0){
       this.humidityFeedback.push("The MAXIMUM temperature reached between "+ startDateString +" - "+endDateString+" is " + maxHum);
       this.humidityFeedback.push("The MINIMUM temperature reached between "+ startDateString +" - "+endDateString+" is " + minHum);
-      this.humidityFeedback.push("The AVERAGE temperature reached between "+ startDateString +" - "+endDateString+" is " + averageHumResult);
+      this.humidityFeedback.push("The AVERAGE temperature reached between "+ startDateString +" - "+endDateString+" is " + averageHumResultSubed);
       if(belowTargetHum > aboveTargetHum){
         this.humidityFeedback.push("The rooms humidity is more frequently below expectations");
       }
@@ -329,8 +331,9 @@ export class ChartsComponent implements OnInit {
         var lightingPercent = 0;
         if(lighting[this.userData['light']]){
           lightingPercent = (lighting[this.userData['light']] / res['data'].length)*100;
+          var lightingPercentSubed = lightingPercent.toString().substring(0,4);
         }
-      this.lightingFeedback.push('The target lighting has been reached '+lightingPercent+'  of the time');
+      this.lightingFeedback.push('The target lighting has been reached '+lightingPercentSubed+'  of the time');
     }
     else{
       this.lightingFeedback.push("NO Data Available");
@@ -339,4 +342,5 @@ export class ChartsComponent implements OnInit {
       });
       /*END OF CHART METHOD*/
     }
+
   }/* END OF CLASS*/

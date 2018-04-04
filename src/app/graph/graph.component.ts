@@ -22,7 +22,7 @@ export class GraphComponent implements OnInit {
       this.userData = {
         "temperature":  res['data'].map(res => res.temperature),
         "humidity":  res['data'].map(res => res.humidity),
-         "light": res['data'].map(res => res.temp)
+
       };
     });
   }

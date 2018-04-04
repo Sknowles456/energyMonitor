@@ -6,13 +6,20 @@
       display: block;
 
 }
-.grid{
-      padding-left: 10%;
-      padding-right: 10%;
 
-}
 .feedbackText{
   color:black;
   font-size:16px;
   font-family: "Times New Roman", Times, serif;
+}
+.card{
+margin-top:10px;
+margin-bottom:10px;
+
+ height:100%;
+ box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 10px 0 rgba(0, 0, 0, 0.4);
+}
+
+input{
+  margin-right:20px;
 }

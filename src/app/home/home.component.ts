@@ -12,9 +12,11 @@ export class HomeComponent implements OnInit {
   path:any;
   id:any;
   futureId:any;
+  lastUpdate:any;
   constructor(private _dataService: DataService){
         this.getCurrentStatus();
         this.getFutureData();
+        this.currentStatus=[];
   }
 
   ngOnInit() {
@@ -36,6 +38,15 @@ export class HomeComponent implements OnInit {
   getCurrentStatus(){
     this._dataService.getCurrentStatus()
     .subscribe(res =>{
+        var date = new Date();
+
+        if (date.getMinutes() <= 9 ){
+          this.lastUpdate = date.getHours()+":0"+date.getMinutes()+":"+date.getSeconds();
+        }
+        else{
+          this.lastUpdate = date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+        }
+
        this.currentStatus = res;
        this.helperArray = this.currentStatus['data']['docs'];
        this.currentStatus = this.helperArray;
