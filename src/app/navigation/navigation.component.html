@@ -1,38 +1,40 @@
-<nav class="navbar navbar-light navbar-expand-lg">
-    <a class="navbar-brand" href="#" style="position:absolute;">
+<nav class="navbar navbar-light navbar-expand-md">
+    <a class="navbar-brand" href="#" >
       <img src="../assets/energylogo.jpg" width="150px;" height="80px;">
     </a>
-    <button class="navbar-toggler justify-content-end" type="button" data-toggle="collapse" data-target="#navbarDrop">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse collapse justify-content-center" id="navbarDrop">
+
+    <div class="navbar-collapse collapse justify-content-center" id="navbarDrop" >
       <ul class="navbar-nav " >
         <li class="nav-item "><a href="#" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href ='/settings' class="nav-link">Settings</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Reports </a>
-        <ul class="dropdown-menu" style="width:300px;" aria-labelledby="navbarDropdown">
-          <div style="padding-left:10px;padding-right:10px;" class="view overlay">
+        <ul class="dropdown-menu"  aria-labelledby="navbarDropdown">
+          <div  class="view overlay navDrops" >
             <li classs="dropdown-item"><a href ='/graph' class="nav-link">Graphs</a></li>
             <li classs="dropdown-item"><a href ='/charts' class="nav-link">Charts</a></li>
           </div>
         </ul>
       </li>
 
-        <li class="nav-item"><a href ='/settings' class="nav-link">Settings</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Notifications <span class="badge" *ngIf="notifications">{{notifications?.total}}</span></a>
-        <ul class="dropdown-menu" style="width:300px;" aria-labelledby="navbarDropdown">
+        <ul class="dropdown-menu"  aria-labelledby="navbarDropdown">
           <div *ngIf="notifications.data.docs">
-            <div  *ngFor="let notifs of notifications.data.docs" style="padding-left:10px;padding-right:10px;" class="view overlay">
+            <div  *ngFor="let notifs of notifications.data.docs" class="view overlay navDrops">
               <li classs="dropdown-item">{{notifs?.notifications[0]|slice:0:30}}...</li>
               <hr>
             </div>
           </div>
           <div class="dropdown-divider"></div>
-          <li ><a style="margin-left:20px;" routerLink="/allNotifications">see More</a></li>
+          <li ><a id="seeMoreNotif"  routerLink="/allNotifications">see More</a></li>
         </ul>
       </li>
       </ul>
     </div>
+    <button class="navbar-toggler justify-content-end " type="button" data-toggle="collapse" data-target="#navbarDrop">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 </nav>
+<hr>
 <router-outlet></router-outlet>

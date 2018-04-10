@@ -48,7 +48,6 @@ module.exports = "<app-navigation></app-navigation>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_service__ = __webpack_require__("../../../../../src/app/data.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,14 +58,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
 var AppComponent = /** @class */ (function () {
-    function AppComponent(_dataService) {
-        var _this = this;
-        this._dataService = _dataService;
-        this.databases = [];
-        this._dataService.getDatabases()
-            .subscribe(function (res) { return _this.databases = res; });
+    function AppComponent() {
     }
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -74,7 +67,7 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/app.component.html"),
             styles: [__webpack_require__("../../../../../src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]])
+        __metadata("design:paramtypes", [])
     ], AppComponent);
     return AppComponent;
 }());
@@ -99,10 +92,9 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__navigation_navigation_component__ = __webpack_require__("../../../../../src/app/navigation/navigation.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__notifications_notifications_component__ = __webpack_require__("../../../../../src/app/notifications/notifications.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__reports_reports_component__ = __webpack_require__("../../../../../src/app/reports/reports.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__settings_settings_component__ = __webpack_require__("../../../../../src/app/settings/settings.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__charts_charts_component__ = __webpack_require__("../../../../../src/app/charts/charts.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__graph_graph_component__ = __webpack_require__("../../../../../src/app/graph/graph.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__settings_settings_component__ = __webpack_require__("../../../../../src/app/settings/settings.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__charts_charts_component__ = __webpack_require__("../../../../../src/app/charts/charts.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__graph_graph_component__ = __webpack_require__("../../../../../src/app/graph/graph.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -123,7 +115,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
+//import components and modules used
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -134,10 +126,9 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_8__navigation_navigation_component__["a" /* NavigationComponent */],
                 __WEBPACK_IMPORTED_MODULE_9__notifications_notifications_component__["a" /* NotificationsComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__home_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__reports_reports_component__["a" /* ReportsComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__settings_settings_component__["a" /* SettingsComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__charts_charts_component__["a" /* ChartsComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__graph_graph_component__["a" /* GraphComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__settings_settings_component__["a" /* SettingsComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__charts_charts_component__["a" /* ChartsComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__graph_graph_component__["a" /* GraphComponent */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -154,17 +145,14 @@ var AppModule = /** @class */ (function () {
                         component: __WEBPACK_IMPORTED_MODULE_10__home_home_component__["a" /* HomeComponent */]
                     },
                     {
-                        path: 'reports',
-                        component: __WEBPACK_IMPORTED_MODULE_11__reports_reports_component__["a" /* ReportsComponent */]
-                    }, {
                         path: 'settings',
-                        component: __WEBPACK_IMPORTED_MODULE_12__settings_settings_component__["a" /* SettingsComponent */]
+                        component: __WEBPACK_IMPORTED_MODULE_11__settings_settings_component__["a" /* SettingsComponent */]
                     }, {
                         path: 'charts',
-                        component: __WEBPACK_IMPORTED_MODULE_13__charts_charts_component__["a" /* ChartsComponent */]
+                        component: __WEBPACK_IMPORTED_MODULE_12__charts_charts_component__["a" /* ChartsComponent */]
                     }, {
                         path: 'graph',
-                        component: __WEBPACK_IMPORTED_MODULE_14__graph_graph_component__["a" /* GraphComponent */]
+                        component: __WEBPACK_IMPORTED_MODULE_13__graph_graph_component__["a" /* GraphComponent */]
                     },
                 ])
             ],
@@ -187,7 +175,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".chart{\r\n      padding-left: 0;\r\n      padding-right: 0;\r\n      margin-left: auto;\r\n      margin-right: auto;\r\n      display: block;\r\n\r\n}\r\n\r\n.feedbackText{\r\n  color:black;\r\n  font-size:16px;\r\n  font-family: \"Times New Roman\", Times, serif;\r\n}\r\n\r\n.card{\r\nmargin-top:10px;\r\nmargin-bottom:10px;\r\n\r\n height:100%;\r\n -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 10px 0 rgba(0, 0, 0, 0.4);\r\n         box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 10px 0 rgba(0, 0, 0, 0.4);\r\n}\r\n\r\ninput{\r\n  margin-right:20px;\r\n}\r\n", ""]);
+exports.push([module.i, ".chart{\r\n      padding-left: 0;\r\n      padding-right: 0;\r\n      margin-left: auto;\r\n      margin-right: auto;\r\n      display: block;\r\n\r\n}\r\n\r\n.feedbackText{\r\n  color:black;\r\n  font-size:16px;\r\n  font-family: \"Times New Roman\", Times, serif;\r\n}\r\n\r\n.card{\r\nmargin-top:10px;\r\nmargin-bottom:10px;\r\n\r\n height:100%;\r\n -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 10px 0 rgba(0, 0, 0, 0.4);\r\n         box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 10px 0 rgba(0, 0, 0, 0.4);\r\n}\r\n\r\ninput{\r\n  margin-right:20px;\r\n}\r\n\r\n.row{\r\n  margin-top:10px;\r\n  margin-bottom:10px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -200,7 +188,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/charts/charts.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"graph\" class=\"text-center container-fluid\">\n\n  <form #dateChartForm=\"ngForm\" (ngSubmit)=\"getChartData(dateChartForm.value)\">\n    <fieldset>\n      <label for=\"startDate\">Start Date</label>\n      <input type=\"date\" name=\"startDate\" ngModel/>\n      <span></span>\n      <label for=\"endDate\">End Date</label>\n      <input type=\"date\" name=\"endDate\"  ngModel/>\n      <button type=\"submit\" class=\"btn btn-dark\" [disabled]=\"!dateChartForm.form.valid\">Submit</button>\n    </fieldset>\n  </form>\n\n  <div class=\"text-center\" *ngIf=\"date1\">\n    <h4 class=\"muted\">{{date1}} - {{date2}}</h4>\n  </div>\n\n  <div class=\"container-fluid text-center\" style=\"margin:auto;\">\n    <div class=\"row\" style=\"margin-top:10px;margin-bottom:10px;\">\n      <div class=\"col-md-6\">\n        <div class=\"card\" >\n          <canvas id=\"canvas4\"class=\"chart\" >{{chart4}}</canvas>\n          <h3>Lighting</h3>\n          <div class=\"feedbackText\"*ngFor=\"let feedback of lightingFeedback\">\n            <p>{{feedback}}</p>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"col-md-6\">\n        <div class=\"card\" >\n          <canvas id=\"canvas\" class=\"card-top chart\">{{chart}}</canvas>\n          <div class=\"card-body\">\n            <h3 class=\"card-title\">Occupancy</h3>\n            <div class=\"feedbackText\" *ngFor=\"let feedback of occupancyFeedback\">\n              <p>{{feedback}}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\" style=\"margin-top:10px;margin-bottom:10px;\">\n      <div class=\"col-md-6\">\n        <div class=\"card\" >\n          <canvas id=\"canvas2\" class=\"card-top chart\">{{chart2}}</canvas>\n          <div class=\"card-body\">\n            <h3  class=\"card-title\">Temperature</h3>\n            <div class=\"feedbackText\"*ngFor=\"let feedback of tempFeedback\">\n              <p>{{feedback}}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"col-md-6\">\n         <div class=\"card\">\n          <canvas id=\"canvas3\" class=\"chart\">{{chart3}}</canvas>\n          <div class=\"card-body\">\n            <h3 class=\"card-title\">Humidity</h3>\n            <div class=\"feedbackText\" *ngFor=\"let feedback of humidityFeedback\">\n              <p>{{feedback}}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n\n  </div>\n</div>\n"
+module.exports = "<div id=\"graph\" class=\"text-center container-fluid\">\n\n  <form #dateChartForm=\"ngForm\" (ngSubmit)=\"getChartData(dateChartForm.value)\">\n    <fieldset>\n      <label for=\"startDate\">Start Date</label>\n      <input type=\"date\" name=\"startDate\" ngModel/>\n      <span></span>\n      <label for=\"endDate\">End Date</label>\n      <input type=\"date\" name=\"endDate\"  ngModel/>\n      <button type=\"submit\" class=\"btn btn-dark\" [disabled]=\"!dateChartForm.form.valid\">Submit</button>\n    </fieldset>\n  </form>\n\n  <div class=\"text-center\" *ngIf=\"date1\">\n    <h4 class=\"muted\">{{date1}} - {{date2}}</h4>\n  </div>\n\n  <div>\n    <div class=\"row\" >\n      <div class=\"col-md-6\" >\n        <div class=\"card\" >\n          <canvas id=\"canvas4\"class=\"chart\" >{{chartLight}}</canvas>\n          <h3>Lighting</h3>\n          <div class=\"feedbackText\"*ngFor=\"let feedback of lightingFeedback\">\n            <p>{{feedback}}</p>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"col-md-6\">\n        <div class=\"card\" >\n          <canvas id=\"canvas\" class=\"card-top chart\">{{chartOcc}}</canvas>\n          <div class=\"card-body\">\n            <h3 class=\"card-title\">Occupancy</h3>\n            <div class=\"feedbackText\" *ngFor=\"let feedback of occupancyFeedback\">\n              <p>{{feedback}}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"row\" >\n      <div class=\"col-md-6\">\n        <div class=\"card\" >\n          <canvas id=\"canvas2\" class=\"card-top chart\">{{chartTemp}}</canvas>\n          <div class=\"card-body\">\n            <h3  class=\"card-title\">Temperature</h3>\n            <div class=\"feedbackText\"*ngFor=\"let feedback of tempFeedback\">\n              <p>{{feedback}}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"col-md-6\">\n         <div class=\"card\">\n          <canvas id=\"canvas3\" class=\"chart\">{{chartHumidity}}</canvas>\n          <div class=\"card-body\">\n            <h3 class=\"card-title\">Humidity</h3>\n            <div class=\"feedbackText\" *ngFor=\"let feedback of humidityFeedback\">\n              <p>{{feedback}}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -250,11 +238,10 @@ var ChartsComponent = /** @class */ (function () {
     }
     ChartsComponent.prototype.ngOnInit = function () {
         this.createCharts();
-        this.cont = document.getElementById("canvas");
     };
     ChartsComponent.prototype.getChartData = function (formData) {
-        this.date1 = formData.startDate;
-        this.date2 = formData.endDate;
+        var date1 = formData.startDate;
+        var date2 = formData.endDate;
         var epochStart = 0;
         var epochEnd = 0;
         if (formData.startDate) {
@@ -263,315 +250,377 @@ var ChartsComponent = /** @class */ (function () {
         }
         this.createCharts(epochStart, epochEnd);
     };
+    ChartsComponent.prototype.destroyLightChart = function () {
+        if (this.chartLight) {
+            this.chartLight.destroy();
+        }
+        ;
+    };
+    ChartsComponent.prototype.destroyTempChart = function () {
+        if (this.chartTemp) {
+            this.chartTemp.destroy();
+        }
+        ;
+    };
+    ChartsComponent.prototype.destroyOccChart = function () {
+        if (this.chartOcc) {
+            this.chartOcc.destroy();
+        }
+        ;
+    };
+    ChartsComponent.prototype.destroyHumChart = function () {
+        if (this.chartHumidity) {
+            this.chartHumidity.destroy();
+        }
+        ;
+    };
+    ChartsComponent.prototype.dateCasting = function (startDate, endDate) {
+        var startDateString;
+        var endDateString;
+        if (startDate == 0) {
+            var endEpoch = new Date().getTime();
+            var startEpoch = endEpoch - 86400000;
+            startDateString = new Date(startEpoch);
+            endDateString = new Date(endEpoch);
+        }
+        else {
+            startDateString = new Date(startDate);
+            endDateString = new Date(endDate);
+        }
+        startDateString = startDateString.toString();
+        endDateString = endDateString.toString();
+        startDateString = startDateString.substring(0, 10);
+        endDateString = endDateString.substring(0, 10);
+        return [startDateString, endDateString];
+    };
+    ChartsComponent.prototype.occupancyCheck = function (data) {
+        var occupancyIn = 0;
+        var occupancyOut = 0;
+        for (var i = 0; i < data.length; i++) {
+            if (data[i]['occupied'] == "Empty") {
+                occupancyOut += 1;
+            }
+            else {
+                occupancyIn += 1;
+            }
+        }
+        ;
+        return [occupancyIn, occupancyOut];
+    };
+    ChartsComponent.prototype.createOccChart = function (occupancyIn, occupancyOut) {
+        var cont = document.getElementById("canvas");
+        this.chartOcc = new __WEBPACK_IMPORTED_MODULE_2_chart_js__(cont, {
+            type: 'pie',
+            data: {
+                datasets: [{
+                        data: [occupancyIn, occupancyOut],
+                        backgroundColor: ["green", "red"],
+                        label: "Living Occupancy"
+                    }],
+                labels: ["Occupied", "Empty"]
+            },
+            options: {
+                responsive: false
+            }, title: {
+                display: true,
+                text: 'Occupancy Daily'
+            }
+        });
+    };
+    ChartsComponent.prototype.occupancyFeedbackGeneration = function (data, occupancyIn, occupancyOut, startDateString, endDateString) {
+        if (data.length > 0) {
+            this.occupancyFeedback = [];
+            this.occupancyFeedback.push("The Property has been vacant for approximatley " + (occupancyOut * 5 / 60).toFixed(2) + " hours between " + startDateString + " and " + endDateString);
+            this.occupancyFeedback.push("The Property has NOT been vacant for approximatley " + (occupancyIn * 5 / 60).toFixed(2) + " hours between " + startDateString + " and " + endDateString);
+            if (occupancyOut > occupancyIn) {
+                this.occupancyFeedback.push("More time is spent outside of this Room");
+            }
+            else if (occupancyOut == occupancyIn) {
+                this.occupancyFeedback.push("Equal time is spent In and Out of this Room");
+            }
+            else {
+                this.occupancyFeedback.push("This is a frequently used room");
+            }
+            ;
+        }
+        else {
+            this.occupancyFeedback.push("No Data Available");
+        }
+        ;
+    };
+    ChartsComponent.prototype.temperatureMinMaxAvg = function (data) {
+        var belowTarget = 0;
+        var aboveTarget = 0;
+        var onTarget = 0;
+        var maxTemp = 0;
+        var minTemp = 0;
+        var averageTemp = 0;
+        minTemp = data[0]['temp'];
+        maxTemp = minTemp;
+        for (var i = 0; i < data.length; i++) {
+            averageTemp = averageTemp + parseInt(data[i]['temp']);
+            if (data[i]['temp'] > maxTemp) {
+                maxTemp = data[i]['temp'];
+            }
+            ;
+            if (data[i]['temp'] < minTemp) {
+                minTemp = data[i]['temp'];
+            }
+            ;
+            if ((data[i]['temp'] - this.userData['temperature']) < -2) {
+                belowTarget += 1;
+            }
+            else if ((data[i]['temp'] - this.userData['temperature']) > 2) {
+                aboveTarget += 1;
+            }
+            else {
+                onTarget += 1;
+            }
+        }
+        ;
+        var averageTempResult = averageTemp / data.length;
+        var averageTempResultSubed = averageTempResult.toString().substring(0, 4);
+        return [minTemp, maxTemp, averageTempResultSubed, aboveTarget, belowTarget, onTarget];
+    };
+    ChartsComponent.prototype.createTemperatureChart = function (tempTuple) {
+        var ctx = document.getElementById("canvas2");
+        this.chartTemp = new __WEBPACK_IMPORTED_MODULE_2_chart_js__(ctx, {
+            type: 'pie',
+            data: {
+                datasets: [{
+                        data: [tempTuple[3], tempTuple[4], tempTuple[5]],
+                        backgroundColor: ["green", "red", "blue"],
+                        label: "Status"
+                    }],
+                labels: ["belowTarget", "aboveTarget", "onTarget - " + this.userData['temperature']]
+            },
+            options: {
+                responsive: false
+            }, title: {
+                display: true,
+                text: 'Targets Daily'
+            }
+        });
+    };
+    ChartsComponent.prototype.temperatureFeedbackGeneration = function (data, tempTuple, endDateString, startDateString) {
+        this.tempFeedback = [];
+        if (data.length > 0) {
+            this.tempFeedback.push("The MAXIMUM temperature reached between " + startDateString + " - " + endDateString + " is " + tempTuple[1]);
+            this.tempFeedback.push("The MINIMUM temperature reached between " + startDateString + " - " + endDateString + " is " + tempTuple[0]);
+            this.tempFeedback.push("The AVERAGEtemperature reached between " + startDateString + " - " + endDateString + " is " + tempTuple[2]);
+            if (tempTuple[3] > tempTuple[4]) {
+                this.tempFeedback.push("The room is more frequently below expectations");
+            }
+            else if (tempTuple[3] == tempTuple[4]) {
+                this.tempFeedback.push("The room has extreme fluctations around the expected temperature");
+            }
+            else if ((tempTuple[5] < tempTuple[4]) && (tempTuple[5] < tempTuple[3])) {
+                this.tempFeedback.push("The room maintains its target well");
+            }
+            else {
+                this.tempFeedback.push("This room is being over utilised with its energy usage");
+            }
+            ;
+        }
+        else {
+            this.tempFeedback.push("NO Data Available");
+        }
+        ;
+    };
+    ChartsComponent.prototype.humidityMinMaxAvg = function (data) {
+        var belowTargetHum = 0;
+        var aboveTargetHum = 0;
+        var onTargetHum = 0;
+        var averageHum = 0;
+        ;
+        var minHum = data[0]['humidity'];
+        var maxHum = minHum;
+        for (var i = 0; i < data.length; i++) {
+            if (data[i]['humidity'] > maxHum) {
+                maxHum = data[i]['humidity'];
+            }
+            ;
+            if (data[i]['humidity'] < minHum) {
+                minHum = data[i]['humidity'];
+            }
+            ;
+            averageHum = averageHum + parseInt(data[i]['humidity']);
+            if (data[i]['humidity'] < 60) {
+                belowTargetHum += 1;
+            }
+            else if ((data[i]['humidity'] - this.userData['humidity']) > 5) {
+                aboveTargetHum += 1;
+            }
+            else {
+                onTargetHum += 1;
+            }
+        }
+        ;
+        var averageHumResult = averageHum / data.length; // Errors occured when trying to manipulate the data and assign to the same variable so use variable holder
+        var averageHumResultSubed = averageHumResult.toString().substring(0, 4); // same error so using extra vars.
+        return [minHum, maxHum, averageHumResultSubed, aboveTargetHum, belowTargetHum, onTargetHum];
+    };
+    ChartsComponent.prototype.createHumidityChart = function (humidityTuple) {
+        var ctx3 = document.getElementById("canvas3");
+        this.chartHumidity = new __WEBPACK_IMPORTED_MODULE_2_chart_js__(ctx3, {
+            type: 'pie',
+            data: {
+                datasets: [{
+                        data: [humidityTuple[4], humidityTuple[3], humidityTuple[5]],
+                        backgroundColor: ["green", "red", "blue"],
+                        label: "Status"
+                    }],
+                labels: ["Danger < 60%", "aboveTarget", "onTarget - " + this.userData['humidity']]
+            },
+            options: {
+                responsive: false
+            }, title: {
+                display: true,
+                text: 'Targets Daily'
+            }
+        });
+    };
+    ChartsComponent.prototype.humidityFeedbackGeneration = function (data, humidityTuple, endDateString, startDateString) {
+        this.humidityFeedback = [];
+        if (data.length > 0) {
+            this.humidityFeedback.push("The MAXIMUM temperature reached between " + startDateString + " - " + endDateString + " is " + humidityTuple[1]);
+            this.humidityFeedback.push("The MINIMUM temperature reached between " + startDateString + " - " + endDateString + " is " + humidityTuple[0]);
+            this.humidityFeedback.push("The AVERAGE temperature reached between " + startDateString + " - " + endDateString + " is " + humidityTuple[2]);
+            if (humidityTuple[4] > humidityTuple[3]) {
+                this.humidityFeedback.push("The rooms humidity is more frequently below expectations");
+            }
+            else {
+                this.humidityFeedback.push("This room has too much moisture for a prolonged period");
+            }
+            ;
+            if (humidityTuple[2] > 70) {
+                this.humidityFeedback.push("The room needs to be vented more to prevent mildew build up");
+            }
+            ;
+        }
+        else {
+            this.humidityFeedback.push("NO Data Available");
+        }
+        ;
+    };
+    ChartsComponent.prototype.lightingLabels = function () {
+        var labels = ["Dull", "Dark", "Good Light", "Bright", "Extremeley Bright"];
+        for (var i = 0; i < labels.length; i++) {
+            if (labels[i] == this.userData['light']) {
+                labels[i] = "Target -" + this.userData['light'].toString();
+            }
+        }
+        return labels;
+    };
+    ChartsComponent.prototype.lightingTargetCheck = function (data) {
+        var lighting = [];
+        lighting['Dull'] = 0;
+        lighting['Good Light'] = 0;
+        lighting['Bright'] = 0;
+        lighting['Extremeley Bright'] = 0;
+        lighting['Dark'] = 0;
+        for (var i = 0; i < data.length; i++) {
+            if (data[i]['light'] == "Dark") {
+                lighting['Dark'] += 1;
+            }
+            else if (data[i]['light'] == "Dull") {
+                lighting['Dull'] += 1;
+            }
+            else if (data[i]['light'] == "Dark") {
+                lighting['Dark'] += 1;
+            }
+            else if (data[i]['light'] == "Good Light") {
+                lighting['Good Light'] += 1;
+            }
+            else if (data[i]['light'] == "Bright") {
+                lighting['Bright'] += 1;
+            }
+            else if (data[i]['light'] == "Extremeley Bright") {
+                lighting['Extremeley Bright'] += 1;
+            }
+        }
+        ;
+        return lighting;
+    };
+    ChartsComponent.prototype.createLightingChart = function (lighting, labels) {
+        var ctx4 = document.getElementById("canvas4");
+        this.chartLight = new __WEBPACK_IMPORTED_MODULE_2_chart_js__(ctx4, {
+            type: 'pie',
+            data: {
+                datasets: [{
+                        data: [lighting['Dull'], lighting['Dark'], lighting['Good Light'], lighting['Bright'], lighting['Extremeley Bright']],
+                        backgroundColor: ["grey", "black", "green", "orange", "yellow"],
+                        label: "Status"
+                    }],
+                labels: labels
+            },
+            options: {
+                responsive: false
+            }, title: {
+                display: true,
+                text: 'Targets Daily'
+            }
+        });
+    };
+    ChartsComponent.prototype.lightFeedbackGeneration = function (data, lighting) {
+        this.lightingFeedback = [];
+        if (data.length > 0) {
+            if (lighting['Extremely Bright']) {
+                this.lightingFeedback.push("There have been periods of extremeley bright lighting, use natural light where possible");
+            }
+            var lightingPercent = 0;
+            if (lighting[this.userData['light']]) {
+                lightingPercent = (lighting[this.userData['light']] / data.length) * 100;
+                var lightingPercentSubed = lightingPercent.toString().substring(0, 4);
+            }
+            this.lightingFeedback.push('The target lighting has been reached ' + lightingPercentSubed + '  of the time');
+        }
+        else {
+            this.lightingFeedback.push("NO Data Available");
+        }
+        ;
+    };
     ChartsComponent.prototype.createCharts = function (startDate, endDate) {
         var _this = this;
         if (startDate === void 0) { startDate = 0; }
         if (endDate === void 0) { endDate = 0; }
         //########### DESTROY EXISTING CHART REFS ############################
-        if (this.chart) {
-            this.chart.destroy();
-        }
-        ;
-        if (this.chart2) {
-            this.chart2.destroy();
-        }
-        ;
-        if (this.chart3) {
-            this.chart3.destroy();
-        }
-        ;
-        if (this.chart4) {
-            this.chart4.destroy();
-        }
-        ;
+        this.destroyLightChart();
+        this.destroyOccChart();
+        this.destroyTempChart();
+        this.destroyHumChart();
         this._dataService.getGraphData(startDate, endDate)
             .subscribe(function (res) {
-            //IF date is selected
-            var startDateString;
-            var endDateString;
-            if (startDate == 0) {
-                var endEpoch = new Date().getTime();
-                var startEpoch = endEpoch - 86400000;
-                startDateString = new Date(startEpoch);
-                endDateString = new Date(endEpoch);
-            }
-            else {
-                startDateString = new Date(startDate);
-                endDateString = new Date(endDate);
-            }
-            startDateString = startDateString.toString();
-            endDateString = endDateString.toString();
-            startDateString = startDateString.substring(0, 10);
-            endDateString = endDateString.substring(0, 10);
+            var dateTuple = _this.dateCasting(startDate, endDate);
+            var startDateString = dateTuple[0];
+            var endDateString = dateTuple[1];
             //################### OCCUPANCY LOOP CHECK ############################
-            var occupancyIn = 0;
-            var occupancyOut = 0;
-            for (var i = 0; i < res['data'].length; i++) {
-                if (res['data'][i]['occupied'] == "Empty") {
-                    occupancyOut += 1;
-                }
-                else {
-                    occupancyIn += 1;
-                }
-            }
-            ;
+            var occupancyTuple = _this.occupancyCheck(res['data']);
+            var occupancyIn = occupancyTuple[0];
+            var occupancyOut = occupancyTuple[1];
             //###################### CHART 1 OCCUPANCY #################################
-            _this.chart = new __WEBPACK_IMPORTED_MODULE_2_chart_js__(_this.cont, {
-                type: 'pie',
-                data: {
-                    datasets: [{
-                            data: [occupancyIn, occupancyOut],
-                            backgroundColor: ["green", "red"],
-                            label: "Living Occupancy"
-                        }],
-                    labels: ["Occupied", "Empty"]
-                },
-                options: {
-                    responsive: false
-                }, title: {
-                    display: true,
-                    text: 'Occupancy Daily'
-                }
-            });
+            _this.createOccChart(occupancyIn, occupancyOut);
             //########### FEED BACK #######################
-            if (res['data'].length > 0) {
-                _this.occupancyFeedback = [];
-                _this.occupancyFeedback.push("The Property has been vacant for approximatley " + (occupancyOut * 5 / 60) + " hours between" + startDateString + " and " + endDateString);
-                _this.occupancyFeedback.push("The Property has NOT been vacant for approximatley " + (occupancyIn * 5) + " minutes between" + startDateString + " and " + endDateString);
-                if (occupancyOut > occupancyIn) {
-                    _this.occupancyFeedback.push("More time is spent outside of this Room");
-                }
-                else if (occupancyOut == occupancyIn) {
-                    _this.occupancyFeedback.push("Equal time is spent In and Out of this Room");
-                }
-                else {
-                    _this.occupancyFeedback.push("This is a frequently used room");
-                }
-                ;
-            }
-            else {
-                _this.occupancyFeedback.push("No Data Available");
-            }
-            ;
+            _this.occupancyFeedbackGeneration(res['data'], occupancyIn, occupancyOut, startDateString, endDateString);
             //######### TEMPERATURE TARGET LOOP CHECK ###############################
-            var belowTarget = 0;
-            var aboveTarget = 0;
-            var onTarget = 0;
-            var maxTemp = 0;
-            var minTemp = 0;
-            var averageTemp = 0;
-            var ctx = document.getElementById("canvas2");
-            minTemp = res['data'][0]['temp'];
-            maxTemp = res['data'][0]['temp'];
-            for (var i = 0; i < res['data'].length; i++) {
-                averageTemp = averageTemp + parseInt(res['data'][i]['temp']);
-                if (res['data'][i]['temp'] > maxTemp) {
-                    maxTemp = res['data'][i]['temp'];
-                }
-                ;
-                if (res['data'][i]['temp'] < minTemp) {
-                    minTemp = res['data'][i]['temp'];
-                }
-                ;
-                if ((res['data'][i]['temp'] - _this.userData['temperature']) < -2) {
-                    belowTarget += 1;
-                }
-                else if ((res['data'][i]['temp'] - _this.userData['temperature']) > 2) {
-                    aboveTarget += 1;
-                }
-                else {
-                    onTarget += 1;
-                }
-            }
-            ;
-            var averageTempResult = averageTemp / res['data'].length;
-            var averageTempResultSubed = averageTempResult.toString().substring(0, 4);
+            var tempTuple = _this.temperatureMinMaxAvg(res['data']); //min,max,avg,above,below,on
             //########################### CHART 2 Temperature Targets #############################"
-            _this.chart2 = new __WEBPACK_IMPORTED_MODULE_2_chart_js__(ctx, {
-                type: 'pie',
-                data: {
-                    datasets: [{
-                            data: [belowTarget, aboveTarget, onTarget],
-                            backgroundColor: ["green", "red", "blue"],
-                            label: "Status"
-                        }],
-                    labels: ["belowTarget", "aboveTarget", "onTarget - " + _this.userData['temperature']]
-                },
-                options: {
-                    responsive: false
-                }, title: {
-                    display: true,
-                    text: 'Targets Daily'
-                }
-            });
+            _this.createTemperatureChart(tempTuple);
             //####################### FEEDBACK ###########################
-            _this.tempFeedback = [];
-            if (res['data'].length > 0) {
-                _this.tempFeedback.push("The MAXIMUM temperature reached between " + startDateString + " - " + endDateString + " is " + maxTemp);
-                _this.tempFeedback.push("The MINIMUM temperature reached between " + startDateString + " - " + endDateString + " is " + minTemp);
-                _this.tempFeedback.push("The AVERAGEtemperature reached between " + startDateString + " - " + endDateString + " is " + averageTempResultSubed);
-                if (belowTarget > aboveTarget) {
-                    _this.tempFeedback.push("The room is more frequently below expectations");
-                }
-                else if (belowTarget == aboveTarget) {
-                    _this.tempFeedback.push("The room has extreme fluctations around the expected temperature");
-                }
-                else {
-                    _this.tempFeedback.push("This room is being over utilised with its energy usage");
-                }
-                ;
-            }
-            else {
-                _this.tempFeedback.push("NO Data Available");
-            }
-            ;
+            _this.temperatureFeedbackGeneration(res['data'], tempTuple, endDateString, startDateString);
             //################## HUMIDITY LOOP CHECK #############################
-            var belowTargetHum = 0;
-            var aboveTargetHum = 0;
-            var onTargetHum = 0;
-            var minHum;
-            var maxHum;
-            var averageHum = 0;
-            ;
-            minHum = res['data'][0]['humidity'];
-            maxHum = res['data'][0]['humidity'];
-            var ctx3 = document.getElementById("canvas3");
-            for (var i = 0; i < res['data'].length; i++) {
-                if (res['data'][i]['humidity'] > maxHum) {
-                    maxHum = res['data'][i]['humidity'];
-                }
-                ;
-                if (res['data'][i]['humidity'] < minHum) {
-                    minHum = res['data'][i]['humidity'];
-                }
-                ;
-                averageHum = averageHum + parseInt(res['data'][i]['humidity']);
-                console.log(res['data'][i]['humidity']);
-                if (res['data'][i]['humidity'] < 60) {
-                    belowTargetHum += 1;
-                }
-                else if ((res['data'][i]['humidity'] - _this.userData['humidity']) > 5) {
-                    aboveTargetHum += 1;
-                }
-                else {
-                    onTargetHum += 1;
-                }
-            }
-            ;
-            console.log("avergaehum" + averageHum);
-            console.log("reslength" + res['data'].length);
-            var averageHumResult = averageHum / res['data'].length;
-            var averageHumResultSubed = averageHumResult.toString().substring(0, 4);
+            var humidityTuple = _this.humidityMinMaxAvg(res['data']); //min,max,avg,above,below,on
             //############################### Humidity Chart ########################################
-            _this.chart3 = new __WEBPACK_IMPORTED_MODULE_2_chart_js__(ctx3, {
-                type: 'pie',
-                data: {
-                    datasets: [{
-                            data: [belowTargetHum, aboveTargetHum, onTargetHum],
-                            backgroundColor: ["green", "red", "blue"],
-                            label: "Status"
-                        }],
-                    labels: ["Danger < 60%", "aboveTarget", "onTarget - " + _this.userData['humidity']]
-                },
-                options: {
-                    responsive: false
-                }, title: {
-                    display: true,
-                    text: 'Targets Daily'
-                }
-            });
+            _this.createHumidityChart(humidityTuple);
             //############## FEED BACK #######################
-            _this.humidityFeedback = [];
-            if (res['data'].length > 0) {
-                _this.humidityFeedback.push("The MAXIMUM temperature reached between " + startDateString + " - " + endDateString + " is " + maxHum);
-                _this.humidityFeedback.push("The MINIMUM temperature reached between " + startDateString + " - " + endDateString + " is " + minHum);
-                _this.humidityFeedback.push("The AVERAGE temperature reached between " + startDateString + " - " + endDateString + " is " + averageHumResultSubed);
-                if (belowTargetHum > aboveTargetHum) {
-                    _this.humidityFeedback.push("The rooms humidity is more frequently below expectations");
-                }
-                else {
-                    _this.humidityFeedback.push("This room has too much moisture for a prolonged period");
-                }
-                ;
-                if (averageHumResult > 70) {
-                    _this.humidityFeedback.push("The room needs to be vented more to prevent mildew build up");
-                }
-                ;
-            }
-            else {
-                _this.humidityFeedback.push("NO Data Available");
-            }
-            ;
+            _this.humidityFeedbackGeneration(res['data'], humidityTuple, endDateString, startDateString);
             //##################### Lighting Levels ########################
-            var lighting = [];
-            lighting['Dull'] = 0;
-            lighting['Good Light'] = 0;
-            lighting['Bright'] = 0;
-            lighting['Extremeley Bright'] = 0;
-            lighting['Dark'] = 0;
-            var ctx4 = document.getElementById("canvas4");
-            for (var i = 0; i < res['data'].length; i++) {
-                if (res['data'][i]['light'] == "Dark") {
-                    lighting['Dark'] += 1;
-                }
-                else if (res['data'][i]['light'] == "Dull") {
-                    lighting['Dull'] += 1;
-                }
-                else if (res['data'][i]['light'] == "Dark") {
-                    lighting['Dark'] += 1;
-                }
-                else if (res['data'][i]['light'] == "Good Light") {
-                    lighting['Good Light'] += 1;
-                }
-                else if (res['data'][i]['light'] == "Bright") {
-                    lighting['Bright'] += 1;
-                }
-                else if (res['data'][i]['light'] == "Extremeley Bright") {
-                    lighting['Extremeley Bright'] += 1;
-                }
-            }
-            ;
-            var labels = ["Dull", "Dark", "Good Light", "Bright", "Extremeley Bright"];
-            for (var i = 0; i < labels.length; i++) {
-                if (labels[i] == _this.userData['light']) {
-                    labels[i] = "Target -" + _this.userData['light'].toString();
-                }
-            }
+            var lightTuple = _this.lightingTargetCheck(res['data']);
+            var lightLabels = _this.lightingLabels();
             //######################## Lighting Chart ################################################
-            _this.chart4 = new __WEBPACK_IMPORTED_MODULE_2_chart_js__(ctx4, {
-                type: 'pie',
-                data: {
-                    datasets: [{
-                            data: [lighting['Dull'], lighting['Dark'], lighting['Good Light'], lighting['Bright'], lighting['Extremeley Bright']],
-                            backgroundColor: ["grey", "black", "green", "orange", "yellow"],
-                            label: "Status"
-                        }],
-                    labels: labels
-                },
-                options: {
-                    responsive: false
-                }, title: {
-                    display: true,
-                    text: 'Targets Daily'
-                }
-            });
+            _this.createLightingChart(lightTuple, lightLabels);
             //##################### Lighitng Feeback #####################
-            _this.lightingFeedback = [];
-            if (res['data'].length > 0) {
-                if (lighting['Extremely Bright']) {
-                    _this.lightingFeedback.push("There have been periods of extremeley bright lighting, use natural light where possible");
-                }
-                var lightingPercent = 0;
-                if (lighting[_this.userData['light']]) {
-                    lightingPercent = (lighting[_this.userData['light']] / res['data'].length) * 100;
-                    var lightingPercentSubed = lightingPercent.toString().substring(0, 4);
-                }
-                _this.lightingFeedback.push('The target lighting has been reached ' + lightingPercentSubed + '  of the time');
-            }
-            else {
-                _this.lightingFeedback.push("NO Data Available");
-            }
-            ;
+            _this.lightFeedbackGeneration(res['data'], lightTuple);
         });
         /*END OF CHART METHOD*/
     };
@@ -614,11 +663,14 @@ var DataService = /** @class */ (function () {
     function DataService(_http) {
         this._http = _http;
     }
+    /*When a component calls the data service module it acts like an object. and call these methods by
+    dataservice.methodName(args**); that will call the http request to the api get the result and
+    return it o the calling function.*/
     DataService.prototype.getDatabases = function () {
         var _this = this;
         return this._http.get("/api/databases")
             .map(function (result) { return _this.result = result.json().data; });
-    };
+    }; //.json() noSQL Databse outputs to json format so we have to ensure that, it remains so after its been collected by the api and passed here
     DataService.prototype.getNotifications = function () {
         var _this = this;
         return this._http.get("/api/notifications")
@@ -626,8 +678,7 @@ var DataService = /** @class */ (function () {
     };
     DataService.prototype.deleteNotifications = function (id) {
         var _this = this;
-        console.log("/api/deleteNotifications/" + id);
-        return this._http.delete('/api/deleteNotifications/' + id)
+        return this._http.delete('/api/deleteNotifications/' + id) //this is how data is passed via a url. the api is set up to take ID as a parameter.
             .map(function (result) { return _this.result = result.json().data; });
     };
     DataService.prototype.getCurrentStatus = function () {
@@ -638,23 +689,20 @@ var DataService = /** @class */ (function () {
     DataService.prototype.postPreferences = function (submission) {
         var _this = this;
         return this._http.post("/api/definedVars", submission)
-            .map(function (result) { return _this.result = result.json(); });
+            .map(function (result) { return _this.result = result.json(); }); //.map(take the result from the api and saves it in our global)
     };
     DataService.prototype.getGraphData = function (startDate, endDate) {
         var _this = this;
-        console.log("1 " + startDate + "enddate " + endDate);
         return this._http.get("/api/graphData/" + startDate + "/" + endDate)
             .map(function (result) { return _this.result = result.json(); });
     };
     DataService.prototype.getUserDefined = function () {
         var _this = this;
-        console.log("Entered ther Dataservice");
         return this._http.get("/api/getUserVariables")
             .map(function (result) { return _this.result = result.json(); });
     };
     DataService.prototype.getFutureDataService = function () {
         var _this = this;
-        console.log("retrieving latest future data predictions");
         return this._http.get("/api/futureData")
             .map(function (result) { return _this.result = result.json(); });
     };
@@ -690,7 +738,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/graph/graph.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"graph\" class=\"text-center\">\n  <form #dateForm=\"ngForm\" (ngSubmit)=\"getGraphData(dateForm.value)\">\n    <label><b>Start Date</b></label>\n    <input type=\"date\" name=\"startDate\" value=\"0\" ngModel/>\n    <label><b>End Date</b></label>\n    <input type=\"date\" name=\"endDate\" value=\"0\" ngModel/>\n    <select name=\"graphType\" ngModel>\n      <option value=\"Temperature\">Temperature</option>\n      <option value=\"Humidity\">Humidity</option>\n    </select>\n    <button type=\"submit\" class=\"btn btn-dark\" [disabled]=\"!dateForm.form.valid\">Submit</button>\n  </form>\n  <div>\n    <button class=\"btn btn-dark\"  value='Charts' (click)=\"resetZoom()\">Reset Zoom/Pan</button>\n  </div>\n  <div >\n    <canvas id=\"canvas\">{{chart}}</canvas>\n  </div>\n</div>\n"
+module.exports = "<div id=\"graph\" class=\"text-center\">\n  <form #dateForm=\"ngForm\" (ngSubmit)=\"getGraphData(dateForm.value)\"><!-- this is how data is binded from form to component..-->\n    <label>\n      <b>Start Date</b>\n    </label>\n    <input type=\"date\" name=\"startDate\" value=\"0\" ngModel/>\n    <label>\n      <b>End Date</b>\n    </label>\n    <input type=\"date\" name=\"endDate\" value=\"0\" ngModel/>\n    <select name=\"graphType\" ngModel>\n      <option value=\"Temperature\">Temperature</option>\n      <option value=\"Humidity\">Humidity</option>\n    </select>\n    <button type=\"submit\" class=\"btn btn-dark\" [disabled]=\"!dateForm.form.valid\">Submit</button>\n  </form>\n  <div>\n    <button class=\"btn btn-dark\"  value='Charts' (click)=\"resetZoom()\">Reset Zoom/Pan</button>\n  </div>\n  <div >\n    <canvas id=\"canvas\">{{chart}}</canvas>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -738,21 +786,19 @@ var GraphComponent = /** @class */ (function () {
     }
     GraphComponent.prototype.ngOnInit = function () {
         this.createGraph(0, 0);
-        this.cont = document.getElementById("canvas");
     };
     GraphComponent.prototype.resetZoom = function () {
         this.chart.resetZoom();
     };
     GraphComponent.prototype.getGraphData = function (formData) {
-        console.log(formData);
         var epochStart = 0;
         var epochEnd = 0;
-        this.chart.destroy();
+        var graph = formData.graphType.toString(); // graph type is temperature or humidity settings on the UI
+        this.chart.destroy(); //destroy refs to the chart or it will still exist in memory.
         if (formData.startDate) {
             epochStart = new Date(formData.startDate).getTime();
             epochEnd = new Date(formData.endDate).getTime();
         }
-        var graph = formData.graphType.toString();
         this.createGraph(epochStart, epochEnd, graph);
     };
     GraphComponent.prototype.createGraph = function (startDate, endDate, status) {
@@ -773,7 +819,7 @@ var GraphComponent = /** @class */ (function () {
                 graphVar = res['data'].map(function (res) { return res.temp; });
                 outsideGraphVar = res['data'].map(function (res) { return res.outside_temp; });
                 userGraphVar = _this.userData['temperature'];
-                max = 30;
+                max = 40;
             }
             else if (status == 'Humidity') {
                 graphVar = res['data'].map(function (res) { return res.humidity; });
@@ -786,7 +832,9 @@ var GraphComponent = /** @class */ (function () {
                 var jsDate = new Date(res * 1000);
                 resDates.push(jsDate.toLocaleTimeString('en', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }));
             });
-            _this.chart = new __WEBPACK_IMPORTED_MODULE_2_chart_js__(_this.cont.getContext('2d'), {
+            // Defining Graph Configurations
+            var context = document.getElementById("canvas");
+            _this.chart = new __WEBPACK_IMPORTED_MODULE_2_chart_js__(context, {
                 type: 'line',
                 data: {
                     labels: resDates,
@@ -844,6 +892,7 @@ var GraphComponent = /** @class */ (function () {
                     },
                     pan: {
                         enabled: true,
+                        mode: 'x'
                     },
                     zoom: {
                         enabled: true,
@@ -889,7 +938,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".cardStyle{\r\n margin:auto;\r\n height:90%;\r\n -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 10px 0 rgba(0, 0, 0, 0.4);\r\n         box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 10px 0 rgba(0, 0, 0, 0.4);\r\n}\r\n\r\n.heading{\r\n  position: absolute;\r\n}\r\n", ""]);
+exports.push([module.i, ".cardStyle{\r\n margin:auto;\r\n height:90%;\r\n -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 10px 0 rgba(0, 0, 0, 0.4);\r\n         box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5), 0 10px 10px 0 rgba(0, 0, 0, 0.4);\r\n}\r\n\r\n.heading{\r\n  position: absolute;\r\n}\r\n\r\n#footerUpdate{\r\n  margin-top:20px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -902,7 +951,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid \">\n  <div class=\"text-center row\" *ngIf=\"currentStatus\">\n    <div class=\"w-150\"></div>\n    <div class=\"col-md-4 cardStyle\">\n    <div class=\"card \">\n      <img class=\"card-img-top \" src=\"../assets/Housingstatus.jpeg\" alt=\"Internal Info\">\n      <div class=\"card-body \">\n        <h4 class=\"card-title\">Home Status</h4>\n        <p class=\"card-text\">The current status of the home.</p>\n      </div>\n      <ul class=\"list-group list-group-flush list-unstyled\">\n        <li><b>Temperature:</b><p> {{currentStatus[0]['temp']}}&deg;C</p></li>\n        <li><b>Humidity:</b><p> {{currentStatus[0]['humidity']}}%</p></li>\n        <li><b>Lumos:</b><p>{{currentStatus[0]['light']}}</p></li>\n        <li><b>Occupancy:</b> <p>{{currentStatus[0]['occupied']}}</p></li>\n      </ul>\n    </div>\n  </div>\n\n  <div class=\"col-md-4 cardStyle\">\n    <div class=\"card\" >\n      <img class=\"card-img-top \" src=\"../assets/morningstatus.jpeg\" alt=\"External Info\">\n      <div class=\"card-body \">\n        <h4 class=\"card-title\">Outside Status</h4>\n        <p class=\"card-text\">The reading from the weather services.</p>\n      </div>\n      <ul class=\"list-group list-group-flush list-unstyled\">\n        <li><b>Weather:</b> <p><img src='{{path}}' height=\"60\" width=\"90\" /></p></li>\n        <li><b>Outside Humidity:</b><p> {{currentStatus[0]['outside_humidity']}}</p></li>\n        <li><b>UV Level:</b><p>{{currentStatus[0]['outside_UV']}}</p></li>\n        <li><b>Outside Temperature:</b><p>{{currentStatus[0]['outside_temp']}}&deg;C</p></li>\n      </ul>\n    </div>\n  </div>\n\n  <div class=\"col-md-4 cardStyle\">\n    <div class=\"card \" >\n      <img class=\"card-img-top homeImages\" src=\"../assets/futurestatus.jpeg\" alt=\"Future Info\">\n      <div class=\"card-body\">\n        <h4 class=\"card-title\">Predictions in 1hr</h4>\n        <p class=\"card-text\">The future prediction in  an hours time.</p>\n      </div>\n      <ul class=\"list-group list-group-flush list-unstyled\">\n        <li><b>Temperature:</b>\n        <p>{{futureData[0]['Temperature']| number : '1.2-2'}}</p></li>\n        <li><b>Humidity:</b><p> {{futureData[0]['Humidity']| number : '1.2-2'}}</p></li>\n        <li><b>Occupied:</b><p> {{futureData[0]['Occupancy']['in']| number : '1.2-2'}}%</p></li>\n        <li><b>Empty:</b><p> {{futureData[0]['Occupancy']['out']| number : '1.2-2'}}%</p></li>\n      </ul>\n    </div>\n  </div>\n</div>\n<footer class=\"text-center\" *ngIf=\"lastUpdate\" style=\"bottom:20px;\">\n  <div style=\"margin-top:20px;\"><p>Last Updated {{lastUpdate}} </p></div>\n</footer>\n</div>\n"
+module.exports = "<div class=\"container-fluid \">\n  <div class=\"text-center row\" *ngIf=\"currentStatus\">\n    <!--<div class=\"w-150\"></div>-->\n    <div class=\"col-md-4 cardStyle\">\n      <div class=\"card \">\n        <img class=\"card-img-top \" src=\"../assets/Housingstatus.jpeg\" alt=\"Internal Info\">\n        <div class=\"card-body \">\n          <h4 class=\"card-title\">Home Status</h4>\n          <p class=\"card-text\">The current status of the home.</p>\n        </div>\n        <ul class=\"list-group list-group-flush list-unstyled\">\n          <li>\n            <b>Temperature:</b>\n            <p> {{currentStatus[0]['temp']}}&deg;C</p>\n          </li>\n          <li>\n            <b>Humidity:</b>\n            <p> {{currentStatus[0]['humidity']}}%</p>\n          </li>\n          <li>\n            <b>Lumos:</b>\n            <p>{{currentStatus[0]['light']}}</p>\n          </li>\n          <li>\n            <b>Occupancy:</b>\n            <p>{{currentStatus[0]['occupied']}}</p>\n          </li>\n        </ul>\n      </div>\n    </div>\n\n    <div class=\"col-md-4 cardStyle\">\n      <div class=\"card\" >\n        <img class=\"card-img-top \" src=\"../assets/morningstatus.jpeg\" alt=\"External Info\">\n        <div class=\"card-body \">\n          <h4 class=\"card-title\">Outside Status</h4>\n          <p class=\"card-text\">The reading from the weather services.</p>\n        </div>\n        <ul class=\"list-group list-group-flush list-unstyled\">\n          <li>\n            <b>Weather:</b>\n            <p>\n              <img src='{{path}}' height=\"60\" width=\"90\" />\n            </p>\n          </li>\n          <li>\n            <b>Outside Humidity:</b>\n            <p> {{currentStatus[0]['outside_humidity']}}</p>\n          </li>\n          <li>\n            <b>UV Level:</b>\n            <p>{{currentStatus[0]['outside_UV']}}</p>\n          </li>\n          <li>\n            <b>Outside Temperature:</b>\n            <p>{{currentStatus[0]['outside_temp']}}&deg;C</p>\n          </li>\n        </ul>\n      </div>\n    </div>\n\n    <div class=\"col-md-4 cardStyle\">\n      <div class=\"card \" >\n        <img class=\"card-img-top\" src=\"../assets/futurestatus.jpeg\" alt=\"Future Info\">\n        <div class=\"card-body\">\n          <h4 class=\"card-title\">Predictions in 1hr</h4>\n          <p class=\"card-text\">The future prediction in  an hours time.</p>\n        </div>\n        <ul class=\"list-group list-group-flush list-unstyled\">\n          <li>\n            <b>Temperature:</b>\n            <p>{{futureData[0]['Temperature']| number : '1.2-2'}}</p>\n          </li>\n          <li>\n            <b>Humidity:</b>\n            <p>{{futureData[0]['Humidity']| number : '1.2-2'}}</p>\n          </li>\n          <li>\n            <b>Occupied:</b>\n            <p> {{futureData[0]['Occupancy']['in']| number : '1.2-2'}}%</p>\n          </li>\n          <li>\n            <b>Empty:</b>\n            <p> {{futureData[0]['Occupancy']['out']| number : '1.2-2'}}%</p>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n</div>\n<footer class=\"text-center\" *ngIf=\"lastUpdate\">\n  <div id=\"footerUpdate\" >\n    <p>Last Updated {{lastUpdate}} </p>\n  </div>\n</footer>\n"
 
 /***/ }),
 
@@ -928,11 +977,11 @@ var HomeComponent = /** @class */ (function () {
     function HomeComponent(_dataService) {
         this._dataService = _dataService;
         this.currentStatus = [];
-        this.helperArray = [];
         this.futureData = [];
+        this.path = '';
+        this.lastUpdate = '';
         this.getCurrentStatus();
         this.getFutureData();
-        this.currentStatus = [];
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -960,9 +1009,7 @@ var HomeComponent = /** @class */ (function () {
             else {
                 _this.lastUpdate = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
             }
-            _this.currentStatus = res;
-            _this.helperArray = _this.currentStatus['data']['docs'];
-            _this.currentStatus = _this.helperArray;
+            _this.currentStatus = res['data']['docs'];
             _this.path = '../../assets/' + _this.currentStatus[0]['outlook'] + '.svg';
         });
     };
@@ -983,7 +1030,7 @@ var HomeComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]])
     ], HomeComponent);
     return HomeComponent;
-}());
+}()); /*End of Class*/
 
 
 
@@ -997,7 +1044,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".icon-bar:hover {\r\n  opacity:0.5;\r\n  color:black;\r\n}\r\n", ""]);
+exports.push([module.i, ".icon-bar:hover {\r\n  opacity:0.5;\r\n  color:black;\r\n}\r\n\r\n.navDrops{\r\n  padding-left:10px;\r\n  padding-right:10px;\r\n}\r\n\r\n.dropdown-menu{\r\n  width:300px;\r\n}\r\n\r\n#seeMoreNotif{\r\n  margin-left:20px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1010,7 +1057,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/navigation/navigation.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-light navbar-expand-lg\">\n    <a class=\"navbar-brand\" href=\"#\" style=\"position:absolute;\">\n      <img src=\"../assets/energylogo.jpg\" width=\"150px;\" height=\"80px;\">\n    </a>\n    <button class=\"navbar-toggler justify-content-end\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarDrop\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"navbar-collapse collapse justify-content-center\" id=\"navbarDrop\">\n      <ul class=\"navbar-nav \" >\n        <li class=\"nav-item \"><a href=\"#\" class=\"nav-link\">Home</a></li>\n        <li class=\"nav-item dropdown\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\">Reports </a>\n        <ul class=\"dropdown-menu\" style=\"width:300px;\" aria-labelledby=\"navbarDropdown\">\n          <div style=\"padding-left:10px;padding-right:10px;\" class=\"view overlay\">\n            <li classs=\"dropdown-item\"><a href ='/graph' class=\"nav-link\">Graphs</a></li>\n            <li classs=\"dropdown-item\"><a href ='/charts' class=\"nav-link\">Charts</a></li>\n          </div>\n        </ul>\n      </li>\n\n        <li class=\"nav-item\"><a href ='/settings' class=\"nav-link\">Settings</a></li>\n        <li class=\"nav-item dropdown\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\">Notifications <span class=\"badge\" *ngIf=\"notifications\">{{notifications?.total}}</span></a>\n        <ul class=\"dropdown-menu\" style=\"width:300px;\" aria-labelledby=\"navbarDropdown\">\n          <div *ngIf=\"notifications.data.docs\">\n            <div  *ngFor=\"let notifs of notifications.data.docs\" style=\"padding-left:10px;padding-right:10px;\" class=\"view overlay\">\n              <li classs=\"dropdown-item\">{{notifs?.notifications[0]|slice:0:30}}...</li>\n              <hr>\n            </div>\n          </div>\n          <div class=\"dropdown-divider\"></div>\n          <li ><a style=\"margin-left:20px;\" routerLink=\"/allNotifications\">see More</a></li>\n        </ul>\n      </li>\n      </ul>\n    </div>\n</nav>\n<router-outlet></router-outlet>\n"
+module.exports = "<nav class=\"navbar navbar-light navbar-expand-md\">\n    <a class=\"navbar-brand\" href=\"#\" >\n      <img src=\"../assets/energylogo.jpg\" width=\"150px;\" height=\"80px;\">\n    </a>\n\n    <div class=\"navbar-collapse collapse justify-content-center\" id=\"navbarDrop\" >\n      <ul class=\"navbar-nav \" >\n        <li class=\"nav-item \"><a href=\"#\" class=\"nav-link\">Home</a></li>\n          <li class=\"nav-item\"><a href ='/settings' class=\"nav-link\">Settings</a></li>\n        <li class=\"nav-item dropdown\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\">Reports </a>\n        <ul class=\"dropdown-menu\"  aria-labelledby=\"navbarDropdown\">\n          <div  class=\"view overlay navDrops\" >\n            <li classs=\"dropdown-item\"><a href ='/graph' class=\"nav-link\">Graphs</a></li>\n            <li classs=\"dropdown-item\"><a href ='/charts' class=\"nav-link\">Charts</a></li>\n          </div>\n        </ul>\n      </li>\n\n        <li class=\"nav-item dropdown\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\">Notifications <span class=\"badge\" *ngIf=\"notifications\">{{notifications?.total}}</span></a>\n        <ul class=\"dropdown-menu\"  aria-labelledby=\"navbarDropdown\">\n          <div *ngIf=\"notifications.data.docs\">\n            <div  *ngFor=\"let notifs of notifications.data.docs\" class=\"view overlay navDrops\">\n              <li classs=\"dropdown-item\">{{notifs?.notifications[0]|slice:0:30}}...</li>\n              <hr>\n            </div>\n          </div>\n          <div class=\"dropdown-divider\"></div>\n          <li ><a id=\"seeMoreNotif\"  routerLink=\"/allNotifications\">see More</a></li>\n        </ul>\n      </li>\n      </ul>\n    </div>\n    <button class=\"navbar-toggler justify-content-end \" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarDrop\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n</nav>\n<hr>\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -1036,11 +1083,10 @@ var NavigationComponent = /** @class */ (function () {
     function NavigationComponent(_dataService) {
         this._dataService = _dataService;
         this.notifications = [];
-        this.splitArray = [];
     }
     NavigationComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.getNavNotifications();
+        this.getNavNotifications(); // on load get notifcations
         setInterval(function () {
             _this.getNavNotifications();
         }, 300000);
@@ -1050,10 +1096,10 @@ var NavigationComponent = /** @class */ (function () {
         this._dataService.getNotifications()
             .subscribe(function (res) {
             _this.notifications = res;
-            _this.splitArray = _this.notifications['data']['docs'].slice(0, 5);
-            _this.notifications['data']['docs'] = _this.splitArray;
+            var splitArray = _this.notifications['data']['docs'].slice(0, 5); // slice the array so that we display only 5 of the total.(shown in nav drop down.)
+            _this.notifications['data']['docs'] = splitArray;
         });
-    };
+    }; /*End of Method*/
     NavigationComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-navigation',
@@ -1063,7 +1109,7 @@ var NavigationComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]])
     ], NavigationComponent);
     return NavigationComponent;
-}());
+}()); /*end of class*/
 
 
 
@@ -1077,7 +1123,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "#descriptionNotif{\r\n  width:70%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1090,7 +1136,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/notifications/notifications.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<table class=\"table table-responsive\" >\n  <thead class=\"thead-dark\">\n  <tr>\n    <th scope=\"col\">#</th>\n    <th scope=\"col\" style=\"max-width:50%\">Description</th><span></span>\n    <th scope=\"col\">Time</th><span></span>\n    <th scope=\"col\">remove</th>\n  </tr>\n  </thead>\n  <tbody class=\"table-striped table-hover\" *ngFor=\"let notifs of allNotifications.data.docs | paginate:{ itemsPerPage :5, currentPage: p}\">\n    <tr>\n      <th scope=\"row\"> </th>\n      <td style=\"width:70%\">{{notifs.notifications}}</td><span></span>\n      <td >{{notifs.timestamp * 1000 | date:'yyyy-MM-dd HH:mm:ss '}}</td><span></span>\n      <td ><button class=\"btn btn-danger\" (click)= 'deleteNotification($event)' value='{{notifs._id}},{{notifs._rev}}'>Remove</button></td>\n    </tr>\n  </tbody>\n</table>\n<pagination-controls (pageChange)=\"p =$event\" class=\"text-center\"></pagination-controls>\n"
+module.exports = "\n<table class=\"table table-responsive\" >\n  <thead class=\"thead-dark\">\n  <tr>\n    <th scope=\"col\">#</th>\n    <th scope=\"col\">Description</th>\n    <span></span>\n    <th scope=\"col\">Time</th>\n    <span></span>\n    <th scope=\"col\">Remove</th>\n  </tr>\n  </thead>\n  <tbody class=\"table-striped table-hover\" *ngFor=\"let notifs of allNotifications.data.docs | paginate:{ itemsPerPage :5, currentPage: p}\">\n    <tr>\n      <th scope=\"row\"> </th>\n      <td id=\"descriptionNotif\">{{notifs.notifications}}</td>\n      <span></span>\n      <td >{{notifs.timestamp * 1000 | date:'yyyy-MM-dd HH:mm:ss '}}</td>\n      <span></span>\n      <td >\n        <button class=\"btn btn-danger\" (click)= 'deleteNotification($event)' value='{{notifs._id}},{{notifs._rev}}'>delete</button>\n      </td>\n    </tr>\n  </tbody>\n</table>\n<pagination-controls (pageChange)=\"p =$event\" class=\"text-center\"></pagination-controls>\n<!-- making use of the module in app.module.ts rgxpagination, it allows us to pass a list with few extra params\n      and paginate them shown in *ngFor directive-->\n"
 
 /***/ }),
 
@@ -1116,15 +1162,12 @@ var NotificationsComponent = /** @class */ (function () {
     function NotificationsComponent(_dataService) {
         this._dataService = _dataService;
         this.allNotifications = [];
-        this.deleteConfirmation = [];
     }
     NotificationsComponent.prototype.deleteNotification = function (event) {
         var _this = this;
-        console.log(event.target.value);
         this._dataService.deleteNotifications(event.target.value)
             .subscribe(function (res) {
-            _this.deleteConfirmation = res;
-            _this.getNotifications();
+            _this.getNotifications(); // get the notifcations after the delete so the page automatically refreshes to the user.
         });
     };
     NotificationsComponent.prototype.getNotifications = function () {
@@ -1144,74 +1187,7 @@ var NotificationsComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]])
     ], NotificationsComponent);
     return NotificationsComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "../../../../../src/app/reports/reports.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "\r\n.image {\r\n  display: block;\r\n  width: 50%;\r\n  height: 80%;\r\n}\r\n.text{\r\n  color: black;\r\n  font-size: 20px;\r\n  position: absolute;\r\n  top: 30%;\r\n  text-align: center;\r\n  opacity:1;\r\n}\r\n.bg-card{\r\n  text-align: center;\r\n  background-color:black;\r\n  opacity: 0.7;\r\n}\r\n.menu{\r\n  margin:auto;\r\n  padding:20px;\r\n\r\n}\r\n.bg-card:hover{\r\n  background-color:#7a7777;\r\n}\r\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/reports/reports.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\" >\r\n\r\n<div class=\"row\" >\r\n  <div class=\"col-lg-2\">\r\n  </div>\r\n  <div class=\"col-xs-4 menu\" >\r\n    <div class=\"card  text-white\" >\r\n      <img class=\"card-img\" href=\"/graph\" src=\"../assets/linegraph.png\">\r\n      <div class=\"card-img-overlay bg-card\">\r\n          <h4 class=\"card-title \">Line Graphs</h4>\r\n          <p class=\"card-text \">View temperature and humidity on a line graph, displaying the outside status, inside status and target status.</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-xs-4 menu \">\r\n    <div class=\"card  text-white\" >\r\n    <img class=\"card-img\" href=\"charts\" src=\"../assets/chartReportsPage.jpeg\">\r\n      <div class=\"card-img-overlay bg-card\">\r\n          <h4 class=\"card-title \">Pie Charts</h4>\r\n          <p class=\"card-text \">Recieve Feedback on lighting, Temperature, Humidity and Occupancy</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-lg-2\">\r\n  </div>\r\n</div>\r\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/reports/reports.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportsComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_service__ = __webpack_require__("../../../../../src/app/data.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var ReportsComponent = /** @class */ (function () {
-    function ReportsComponent(_dataService, _element) {
-        this._dataService = _dataService;
-        this._element = _element;
-    }
-    ReportsComponent.prototype.ngOnInit = function () {
-    };
-    ReportsComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'app-reports',
-            template: __webpack_require__("../../../../../src/app/reports/reports.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/reports/reports.component.css")]
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]])
-    ], ReportsComponent);
-    return ReportsComponent;
-}()); /* END OF CLASS*/
+}()); /*End of Class*/
 
 
 
@@ -1238,7 +1214,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/settings/settings.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h2> User Preferences </h2>\n  <form #preferenceForm=\"ngForm\" (ngSubmit)=\"addPreferences(preferenceForm.value)\">\n    <div class=\"form-group\">\n      <label>Property</label>\n      <select name=\"property\" required ngModel>\n        <option name=\"sho1\" value=\"sho1\">55 Heathwood, Bournemouth</option>\n      </select>\n    </div>\n    <div class=\"form-group\">\n      <label>Temperature(&deg;C)</label>\n      <input type=\"number\" name=\"definedTemp\" min=\"15\" max=\"28\" placeholder=\"21\" class=\"form-control\" required ngModel>\n      <p class=\"text-muted\">The room temperature you wish to aim for</p>\n    </div>\n    <div class=\"form-group\">\n      <label>Humidity (%)</label>\n      <input type=\"number\" name=\"definedHumidity\" class=\"form-control\" min=\"60\" max=\"90\" placeholder=\"70\" required ngModel>\n      <p class=\"text-muted\">The room humidity you wish to have.</p>\n    </div>\n    <div class=\"form-group\">\n      <label>Light Level</label>\n      <select name=\"lumos\"  required ngModel>\n        <option name=\"dark\" value=\"Dark\" >Dark</option>\n        <option name=\"dull\" value=\"Dull\" >Dull</option>\n        <option name=\"dark\" value=\"Bright\" >Bright</option>\n        <option name=\"dark\" value=\"veryBright\" >Very Bright</option>\n      </select>\n      <p class=\"text-muted\">The room lumos you wish to have</p>\n    </div>\n    <button  type=\"submit\" class=\"btn btn-dark\" [disabled]=\"!preferenceForm.form.valid\">Submit</button>\n  </form>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <h2> User Preferences </h2>\n  <form #preferenceForm=\"ngForm\" (ngSubmit)=\"addPreferences(preferenceForm.value)\">\n    <div class=\"form-group\">\n      <label>Property</label>\n      <select name=\"property\" required ngModel>\n        <option name=\"sho1\" value=\"sho1\">55 Heathwood, Bournemouth</option>\n      </select>\n    </div>\n    <div class=\"form-group\">\n      <label>Temperature(&deg;C)</label>\n      <input type=\"number\" name=\"definedTemp\" min=\"15\" max=\"28\" placeholder=\"21\" class=\"form-control\" required ngModel>\n      <p class=\"text-muted\">The room temperature you wish to aim for.</p>\n    </div>\n    <div class=\"form-group\">\n      <label>Humidity (%)</label>\n      <input type=\"number\" name=\"definedHumidity\" class=\"form-control\" min=\"60\" max=\"90\" placeholder=\"70\" required ngModel>\n      <p class=\"text-muted\">The rooms humidity you wish to have.</p>\n    </div>\n    <div class=\"form-group\">\n      <label>Light Level</label>\n      <select name=\"lumos\"  required ngModel>\n        <option name=\"dark\" value=\"Dark\" >Dark</option>\n        <option name=\"dull\" value=\"Dull\" >Dull</option>\n        <option name=\"dark\" value=\"Bright\" >Bright</option>\n        <option name=\"dark\" value=\"veryBright\" >Very Bright</option>\n      </select>\n      <p class=\"text-muted\">The room lumos you wish to have</p>\n    </div>\n    <button  type=\"submit\" class=\"btn btn-dark\" [disabled]=\"!preferenceForm.form.valid\">Submit</button>\n  </form>\n  <div *ngIf=\"responses\" class=\"text-muted text-center\">\n    <p>Successfully Saved!</p>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1266,7 +1242,7 @@ var SettingsComponent = /** @class */ (function () {
     }
     SettingsComponent.prototype.addPreferences = function (submission) {
         var _this = this;
-        this._dataService.postPreferences(submission)
+        this._dataService.postPreferences(submission) //pass on form data to the postPrefences method in the data services object.
             .subscribe(function (res) { return _this.responses = res; });
     };
     SettingsComponent.prototype.ngOnInit = function () {

@@ -2,3 +2,16 @@
   opacity:0.5;
   color:black;
 }
+
+.navDrops{
+  padding-left:10px;
+  padding-right:10px;
+}
+
+.dropdown-menu{
+  width:300px;
+}
+
+#seeMoreNotif{
+  margin-left:20px;
+}

@@ -15,11 +15,11 @@
     <h4 class="muted">{{date1}} - {{date2}}</h4>
   </div>
 
-  <div class="container-fluid text-center" style="margin:auto;">
-    <div class="row" style="margin-top:10px;margin-bottom:10px;">
-      <div class="col-md-6">
+  <div>
+    <div class="row" >
+      <div class="col-md-6" >
         <div class="card" >
-          <canvas id="canvas4"class="chart" >{{chart4}}</canvas>
+          <canvas id="canvas4"class="chart" >{{chartLight}}</canvas>
           <h3>Lighting</h3>
           <div class="feedbackText"*ngFor="let feedback of lightingFeedback">
             <p>{{feedback}}</p>
@@ -29,7 +29,7 @@
 
       <div class="col-md-6">
         <div class="card" >
-          <canvas id="canvas" class="card-top chart">{{chart}}</canvas>
+          <canvas id="canvas" class="card-top chart">{{chartOcc}}</canvas>
           <div class="card-body">
             <h3 class="card-title">Occupancy</h3>
             <div class="feedbackText" *ngFor="let feedback of occupancyFeedback">
@@ -39,10 +39,11 @@
         </div>
       </div>
     </div>
-    <div class="row" style="margin-top:10px;margin-bottom:10px;">
+
+    <div class="row" >
       <div class="col-md-6">
         <div class="card" >
-          <canvas id="canvas2" class="card-top chart">{{chart2}}</canvas>
+          <canvas id="canvas2" class="card-top chart">{{chartTemp}}</canvas>
           <div class="card-body">
             <h3  class="card-title">Temperature</h3>
             <div class="feedbackText"*ngFor="let feedback of tempFeedback">
@@ -53,7 +54,7 @@
       </div>
       <div class="col-md-6">
          <div class="card">
-          <canvas id="canvas3" class="chart">{{chart3}}</canvas>
+          <canvas id="canvas3" class="chart">{{chartHumidity}}</canvas>
           <div class="card-body">
             <h3 class="card-title">Humidity</h3>
             <div class="feedbackText" *ngFor="let feedback of humidityFeedback">
@@ -65,4 +66,5 @@
     </div>
 
   </div>
+
 </div>

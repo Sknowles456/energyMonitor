@@ -70,6 +70,7 @@ def generateObject(databaseResult, previousResult):
 	weekday = theWeekDay.weekday()
 	hour = date[11:13]
 
+    #prediction requires the np list to be in float format.
 	dataObject = {
 	"insideTemp": databaseResult['docs'][0]['temp'],
 	"light": lightObject[Light],
@@ -86,41 +87,43 @@ def generateObject(databaseResult, previousResult):
 	"outlook" : float(outlookObject[Outlook]),
 	"occupancy" : float(Occupancy)
 	}
-	print(dataObject['insideTemp'])
 
 	return dataObject
 
+//construct the prediction array depending on the model type.
 def predictionArray(dataObject,type):
 	if(type == 'humidity'):
 		hr_before = dataObject['hr_beforeHum']
 	elif(type == 'temp'):
 		hr_before = dataObject['hr_before']
-#temp,humidity,light,outlook,outside_UV,outside_temp,outside_hum, Month, Day, weekday, hour, occupancy, hr_before, hr_after
+    #follow this order
+    #temp,humidity,light,outlook,outside_UV,outside_temp,outside_hum, Month, Day, weekday, hour, occupancy, hr_before, hr_after
 	predictionList = [dataObject['insideTemp'],dataObject['humidity'],dataObject['light'],
 	dataObject['outlook'],dataObject['UV'],dataObject['outside_temp'],dataObject['outside_humidity'],
 	dataObject['month'],dataObject['day'],dataObject['weekday'],dataObject['hour'],
 	dataObject['occupancy'],hr_before]
 
-	print("predictionList",predictionList)
-
 	return predictionList
 
+#read the csv file and store in pandas format.
 def readCsv(filePath):
 	file = pd.read_csv(filePath)
 
 	return file
 
+#Remove the target field from the model for training and accuracy assesment
 def sanitizeTarget(targetData,encoder):
 	targetData.drop('hr_after', axis=1,inplace=True)
 
-
 	return targetData
 
+#store the target data for use in model evaluation
 def targetAttr(targetData):
 	targetY = targetData.hr_after.tolist()
 
 	return targetY
 
+#Create the prediction datset for occupancy based off the current date and time.
 def dateListGen():
 	current_time = str(datetime.datetime.now())
 
@@ -130,7 +133,7 @@ def dateListGen():
 	minute= int(current_time[14:16])
 	weekday= datetime.datetime.weekday(datetime.datetime.now())
 	dateList = np.array([month,day,weekday,hour,minute])
-	dateList = dateList.reshape(1,-1)
+	dateList = dateList.reshape(1,-1) #change data format so its compatible with scikit
 
 	return dateList
 
@@ -149,6 +152,7 @@ def predictionUpload(humResult,tempResult,NBP):
 	if upload:
 		print ("Successful")
 
+### __main #####
 # Retrieve and Format Data
 databaseResult = connectToDatabase('rooms',selector)# Get current Status
 previousResult = connectToDatabase('rooms',selector)# Get status 1 hour ago
@@ -156,7 +160,7 @@ dataObject = generateObject(databaseResult,previousResult)#create the data objec
 
 ###################### HUMIDITY Linear MODEL ############################
 targetData = readCsv('models/TrainingDataHumidity.csv') # read the csv file
-#print targetData.isnull().any()
+print targetData.isnull().any()
 targetY = targetAttr(targetData) #separate the target fields
 targetData = sanitizeTarget(targetData,labelEncoder) # ensure data if of the needed format
 linearModel.fit(targetData,targetY)
@@ -169,7 +173,7 @@ print ("humidity RMSE:",mean_squared_error(targetY,HumPredictions))
 
 ##################### TEMPERATURE support vector Regresson MODEL ###################################
 targetDataTemp = readCsv('models/TrainingDataTemp.csv')
-#print targetDataTemp.isnull().any()
+print targetDataTemp.isnull().any()
 targetTempY = targetAttr(targetDataTemp)
 targetDataTemp = sanitizeTarget(targetDataTemp, labelEncoder)
 supportModel.fit(targetDataTemp,targetTempY)

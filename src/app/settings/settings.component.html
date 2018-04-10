@@ -10,12 +10,12 @@
     <div class="form-group">
       <label>Temperature(&deg;C)</label>
       <input type="number" name="definedTemp" min="15" max="28" placeholder="21" class="form-control" required ngModel>
-      <p class="text-muted">The room temperature you wish to aim for</p>
+      <p class="text-muted">The room temperature you wish to aim for.</p>
     </div>
     <div class="form-group">
       <label>Humidity (%)</label>
       <input type="number" name="definedHumidity" class="form-control" min="60" max="90" placeholder="70" required ngModel>
-      <p class="text-muted">The room humidity you wish to have.</p>
+      <p class="text-muted">The rooms humidity you wish to have.</p>
     </div>
     <div class="form-group">
       <label>Light Level</label>
@@ -29,4 +29,7 @@
     </div>
     <button  type="submit" class="btn btn-dark" [disabled]="!preferenceForm.form.valid">Submit</button>
   </form>
+  <div *ngIf="responses" class="text-muted text-center">
+    <p>Successfully Saved!</p>
+  </div>
 </div>

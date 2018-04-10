@@ -1,8 +1,12 @@
 <div id="graph" class="text-center">
-  <form #dateForm="ngForm" (ngSubmit)="getGraphData(dateForm.value)">
-    <label><b>Start Date</b></label>
+  <form #dateForm="ngForm" (ngSubmit)="getGraphData(dateForm.value)"><!-- this is how data is binded from form to component..-->
+    <label>
+      <b>Start Date</b>
+    </label>
     <input type="date" name="startDate" value="0" ngModel/>
-    <label><b>End Date</b></label>
+    <label>
+      <b>End Date</b>
+    </label>
     <input type="date" name="endDate" value="0" ngModel/>
     <select name="graphType" ngModel>
       <option value="Temperature">Temperature</option>

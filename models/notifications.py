@@ -21,9 +21,9 @@ def connectToDatabase(table, selector):
 	dbConnection = client[table]
 	result = dbConnection.get_query_result(selector,raw_result=True,sort=[{"timestamp":"desc"}],limit=1)
 	time.sleep(1)
-	
+
 	return result
-	
+
 def uploadToDatabase(notifList):
 	doc = {
 	"timestamp":int(time.time()),
@@ -32,12 +32,14 @@ def uploadToDatabase(notifList):
 	docUpload = notifDB.create_document(doc)
 	if docUpload:
 		print("Uploaded document to notifications table",notifList)
-	
+
+#retrieves a value for the lighting String
 def encodeLighting(lightScore,index):
 	encode = lightScore[index]
 
 	return encode
-	
+
+#Determines whther action is to be taken on house devices based off occupancy.
 def occupancyEvaluation(inProb, outProb):
 	if(inProb > outProb ):
 		notifList.append("TAKE ACTION AS EXPECTED TO BE IN")
@@ -45,7 +47,8 @@ def occupancyEvaluation(inProb, outProb):
 		notifList.append("NO ACTION AS EXPECTED TO BE OUT- override manual controls if wrong. Potential actions below;")
 	else:
 		notifList.append("System unsure please manually adjust if needed")
-	
+
+#Temperature value compared against the users target to determine what action to take.
 def targetVsFutureTemp(futureResult, userTargetResult):
 	tempDif = variableDifferences(futureResult['docs'][0]['Temperature'], userTargetResult['docs'][0]['temperature'])
 	if(tempDif > 1):
@@ -55,6 +58,7 @@ def targetVsFutureTemp(futureResult, userTargetResult):
 	else:
 		notifList.append("Temperature is within acceptable ranges")
 
+#future data against target data on humidity to determine what action to take
 def targetVsFutureHum(futureResult,userTargetResult):
 	humDif = variableDifferences(futureResult['docs'][0]['Humidity'],userTargetResult['docs'][0]['humidity'])
 	if(humDif > 2.5):
@@ -63,11 +67,13 @@ def targetVsFutureHum(futureResult,userTargetResult):
 		notifList.append("Future Humidity will be lower than the target by %s prevent ventilation "%round(humDif,2))
 	else:
 		notifList.append("Humidity is within acceptable ranges")
-		
+
 def variableDifferences(x,y):
 
 	return x-y
-	
+
+#Current lighting status against the target as this can have immediate effect.
+# tempo and humidity are a gradual process therefore future data is best fitted.
 def lightingEvaluation(currentScore,targetScore):
 	if(currentScore > targetScore):
 		notifList.append("Turning down the lighting to meet user targets from %s to %s"%(latestLightStatus,userTargetResult['docs'][0]['light']))

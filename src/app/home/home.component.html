@@ -1,56 +1,95 @@
 <div class="container-fluid ">
   <div class="text-center row" *ngIf="currentStatus">
-    <div class="w-150"></div>
+    <!--<div class="w-150"></div>-->
     <div class="col-md-4 cardStyle">
-    <div class="card ">
-      <img class="card-img-top " src="../assets/Housingstatus.jpeg" alt="Internal Info">
-      <div class="card-body ">
-        <h4 class="card-title">Home Status</h4>
-        <p class="card-text">The current status of the home.</p>
+      <div class="card ">
+        <img class="card-img-top " src="../assets/Housingstatus.jpeg" alt="Internal Info">
+        <div class="card-body ">
+          <h4 class="card-title">Home Status</h4>
+          <p class="card-text">The current status of the home.</p>
+        </div>
+        <ul class="list-group list-group-flush list-unstyled">
+          <li>
+            <b>Temperature:</b>
+            <p> {{currentStatus[0]['temp']}}&deg;C</p>
+          </li>
+          <li>
+            <b>Humidity:</b>
+            <p> {{currentStatus[0]['humidity']}}%</p>
+          </li>
+          <li>
+            <b>Lumos:</b>
+            <p>{{currentStatus[0]['light']}}</p>
+          </li>
+          <li>
+            <b>Occupancy:</b>
+            <p>{{currentStatus[0]['occupied']}}</p>
+          </li>
+        </ul>
       </div>
-      <ul class="list-group list-group-flush list-unstyled">
-        <li><b>Temperature:</b><p> {{currentStatus[0]['temp']}}&deg;C</p></li>
-        <li><b>Humidity:</b><p> {{currentStatus[0]['humidity']}}%</p></li>
-        <li><b>Lumos:</b><p>{{currentStatus[0]['light']}}</p></li>
-        <li><b>Occupancy:</b> <p>{{currentStatus[0]['occupied']}}</p></li>
-      </ul>
     </div>
-  </div>
 
-  <div class="col-md-4 cardStyle">
-    <div class="card" >
-      <img class="card-img-top " src="../assets/morningstatus.jpeg" alt="External Info">
-      <div class="card-body ">
-        <h4 class="card-title">Outside Status</h4>
-        <p class="card-text">The reading from the weather services.</p>
+    <div class="col-md-4 cardStyle">
+      <div class="card" >
+        <img class="card-img-top " src="../assets/morningstatus.jpeg" alt="External Info">
+        <div class="card-body ">
+          <h4 class="card-title">Outside Status</h4>
+          <p class="card-text">The reading from the weather services.</p>
+        </div>
+        <ul class="list-group list-group-flush list-unstyled">
+          <li>
+            <b>Weather:</b>
+            <p>
+              <img src='{{path}}' height="60" width="90" />
+            </p>
+          </li>
+          <li>
+            <b>Outside Humidity:</b>
+            <p> {{currentStatus[0]['outside_humidity']}}</p>
+          </li>
+          <li>
+            <b>UV Level:</b>
+            <p>{{currentStatus[0]['outside_UV']}}</p>
+          </li>
+          <li>
+            <b>Outside Temperature:</b>
+            <p>{{currentStatus[0]['outside_temp']}}&deg;C</p>
+          </li>
+        </ul>
       </div>
-      <ul class="list-group list-group-flush list-unstyled">
-        <li><b>Weather:</b> <p><img src='{{path}}' height="60" width="90" /></p></li>
-        <li><b>Outside Humidity:</b><p> {{currentStatus[0]['outside_humidity']}}</p></li>
-        <li><b>UV Level:</b><p>{{currentStatus[0]['outside_UV']}}</p></li>
-        <li><b>Outside Temperature:</b><p>{{currentStatus[0]['outside_temp']}}&deg;C</p></li>
-      </ul>
     </div>
-  </div>
 
-  <div class="col-md-4 cardStyle">
-    <div class="card " >
-      <img class="card-img-top homeImages" src="../assets/futurestatus.jpeg" alt="Future Info">
-      <div class="card-body">
-        <h4 class="card-title">Predictions in 1hr</h4>
-        <p class="card-text">The future prediction in  an hours time.</p>
+    <div class="col-md-4 cardStyle">
+      <div class="card " >
+        <img class="card-img-top" src="../assets/futurestatus.jpeg" alt="Future Info">
+        <div class="card-body">
+          <h4 class="card-title">Predictions in 1hr</h4>
+          <p class="card-text">The future prediction in  an hours time.</p>
+        </div>
+        <ul class="list-group list-group-flush list-unstyled">
+          <li>
+            <b>Temperature:</b>
+            <p>{{futureData[0]['Temperature']| number : '1.2-2'}}</p>
+          </li>
+          <li>
+            <b>Humidity:</b>
+            <p>{{futureData[0]['Humidity']| number : '1.2-2'}}</p>
+          </li>
+          <li>
+            <b>Occupied:</b>
+            <p> {{futureData[0]['Occupancy']['in']| number : '1.2-2'}}%</p>
+          </li>
+          <li>
+            <b>Empty:</b>
+            <p> {{futureData[0]['Occupancy']['out']| number : '1.2-2'}}%</p>
+          </li>
+        </ul>
       </div>
-      <ul class="list-group list-group-flush list-unstyled">
-        <li><b>Temperature:</b>
-        <p>{{futureData[0]['Temperature']| number : '1.2-2'}}</p></li>
-        <li><b>Humidity:</b><p> {{futureData[0]['Humidity']| number : '1.2-2'}}</p></li>
-        <li><b>Occupied:</b><p> {{futureData[0]['Occupancy']['in']| number : '1.2-2'}}%</p></li>
-        <li><b>Empty:</b><p> {{futureData[0]['Occupancy']['out']| number : '1.2-2'}}%</p></li>
-      </ul>
     </div>
   </div>
 </div>
-<footer class="text-center" *ngIf="lastUpdate" style="bottom:20px;">
-  <div style="margin-top:20px;"><p>Last Updated {{lastUpdate}} </p></div>
+<footer class="text-center" *ngIf="lastUpdate">
+  <div id="footerUpdate" >
+    <p>Last Updated {{lastUpdate}} </p>
+  </div>
 </footer>
-</div>

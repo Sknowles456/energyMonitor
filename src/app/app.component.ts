@@ -9,10 +9,7 @@ import {DataService}  from './data.service';
 
 export class AppComponent {
 
-  databases = [];
+  constructor(){
 
-  constructor(private _dataService: DataService){
-    this._dataService.getDatabases()
-    .subscribe(res => this.databases = res);
   }
 }

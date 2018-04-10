@@ -1,8 +1,8 @@
+//modules required and instanciated here
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var pythonShell = require('python-shell');
-// default routes used in app.use
 var api = require('./server/routes/api')
 var port = 3000;
 var http = require('http');
@@ -11,19 +11,21 @@ var Cloudant = require('cloudant');
 var app = express();
 
  var pyOptions = {
-  pythonOptions: ['-u'],
+  pythonOptions: ['-u'], // following the child processes outputs
    mode:'text' // return text based responses from child process
  };
+
 // child process script on the server to predict future state of the envrionment.
+//Forecasting runs the current data against the predictive models to generate its output.
 function forecast(){
-  console.log("Staring execution of Forecasting at"+ new Date());
+  console.log("Staring execution of Forecasting at "+ new Date());
   pythonShell.run('models/forecast.py',pyOptions, function (err,result) {
     if (err) throw err;
     console.log('Finished Forecasting at '+ new Date());
     console.log(result); // display all prints from the python script.
   });
 }
-
+//using the latest user targets, housing status and predictions to generate suggestions o how to manage the house.
 function notifications(){
   console.log("Staring execution of Notifications at"+ new Date());
   pythonShell.run('models/notifications.py',pyOptions, function (err,result) {
@@ -35,7 +37,7 @@ function notifications(){
 forecast();
 setInterval(notifications, 300000);
 
-app.set('views', path.join(__dirname, 'views'));
+//This uses the ejs engine to visualise the mark up language and we are telling it to render html.
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 

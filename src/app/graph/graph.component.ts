@@ -14,44 +14,38 @@ import 'chartjs-plugin-annotation';
 export class GraphComponent implements OnInit {
   userData:any;
   chart;
-  cont;
 
-  constructor(private _dataService: DataService, private _element: ElementRef) {
+  constructor(private _dataService: DataService, private _element: ElementRef) { //ElementRef is needed for access to body elements, to retrieve their context.
     this._dataService.getUserDefined()
     .subscribe(res=>{
       this.userData = {
         "temperature":  res['data'].map(res => res.temperature),
         "humidity":  res['data'].map(res => res.humidity),
-
       };
     });
   }
 
   ngOnInit() {
     this.createGraph(0,0);
-    this.cont = document.getElementById("canvas");
   }
 
-  resetZoom(){
+  resetZoom(){//resets the zoom and panning on the graph.
     this.chart.resetZoom()
   }
 
-  getGraphData(formData){
-    console.log(formData);
+  getGraphData(formData){ //retrieve data between specified dates.
     var epochStart = 0;
     var epochEnd = 0;
-    this.chart.destroy();
-    if(formData.startDate){
+    var graph = formData.graphType.toString();// graph type is temperature or humidity settings on the UI
+    this.chart.destroy();//destroy refs to the chart or it will still exist in memory.
+    if(formData.startDate){ //if no time has been set select current time.
       epochStart = new Date(formData.startDate).getTime();
       epochEnd = new Date(formData.endDate).getTime();
     }
-    var graph = formData.graphType.toString();
     this.createGraph(epochStart, epochEnd, graph);
-
   }
 
   createGraph(startDate,endDate,status = 'Temperature'){
-
     this._dataService.getGraphData(startDate,endDate)
     .subscribe(res => {
       let userVar = []
@@ -64,11 +58,11 @@ export class GraphComponent implements OnInit {
       var min =0;
       var max = 0;
 
-      if(status == 'Temperature'){
+      if(status == 'Temperature'){//organising the data to its relevant store ready to be displayed.
         graphVar = res['data'].map(res => res.temp)
         outsideGraphVar = res['data'].map(res => res.outside_temp)
         userGraphVar = this.userData['temperature']
-        max = 30;
+        max = 40;
       }
       else if(status == 'Humidity'){
         graphVar = res['data'].map(res => res.humidity)
@@ -77,13 +71,13 @@ export class GraphComponent implements OnInit {
         max = 100;
       }
       timestamp = res['data'].map(res => res.timestamp)
-
-      timestamp.forEach((res)=>{
+      timestamp.forEach((res)=>{//Loop through each timestamp in the dataset and convert epoch to ddmmyyy hhmm
         let jsDate = new Date(res * 1000)
         resDates.push(jsDate.toLocaleTimeString('en',{year:'numeric', month:'short', day:'numeric',hour: '2-digit', minute:'2-digit'}))
       })
-
-      this.chart = new Chart(this.cont.getContext('2d'),{
+        // Defining Graph Configurations
+      var context = document.getElementById("canvas");
+      this.chart = new Chart(context,{
         type:'line',
         data:{
           labels:resDates,
@@ -141,6 +135,7 @@ export class GraphComponent implements OnInit {
                 },
           pan:{
             enabled:true,
+            mode:'x'
           },
           zoom:{
             enabled:true,
